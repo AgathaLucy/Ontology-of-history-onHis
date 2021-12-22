@@ -1,0 +1,2412 @@
+@prefix : <http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70> .
+
+<http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#istniejeW
+:istniejeW rdf:type owl:ObjectProperty ;
+           owl:inverseOf :zawieraSieW ;
+           rdfs:range :miejsce ;
+           rdfs:label "istnieje w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestBabcia
+:jestBabcia rdf:type owl:ObjectProperty ;
+            owl:inverseOf :maBabcie ;
+            rdfs:label "jest babcią"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestBratem
+:jestBratem rdf:type owl:ObjectProperty ;
+            owl:inverseOf :maBrata ;
+            rdfs:label "jest bratem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestCorka
+:jestCorka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :jestDzieckiem ;
+           owl:inverseOf :maCorke ;
+           rdfs:label "jest córką"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestDziadkiem
+:jestDziadkiem rdf:type owl:ObjectProperty ;
+               owl:inverseOf :maDziadka ;
+               rdfs:label "jest dziadkiem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestDzieckiem
+:jestDzieckiem rdf:type owl:ObjectProperty ;
+               owl:equivalentProperty :maRodzica ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:label "jest dzieckiem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestMatka
+:jestMatka rdf:type owl:ObjectProperty ;
+           owl:inverseOf :maMatke ;
+           rdfs:label "jest matką"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestMeskimPartneremW
+:jestMeskimPartneremW rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :maMeskiegoPartnera ;
+                      rdfs:domain :mezczyzna ;
+                      rdfs:range :slub ;
+                      rdfs:label "jest męskim partnerem w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestMezem
+:jestMezem rdf:type owl:ObjectProperty ;
+           owl:inverseOf :maMeza ;
+           rdfs:label "jest mężem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestOjcem
+:jestOjcem rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :maOjca ;
+           rdfs:label "jest ojcem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestPrzodkiem
+:jestPrzodkiem rdf:type owl:ObjectProperty ;
+               owl:inverseOf :maPrzodka ;
+               rdfs:label "jest przodkiem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestRodzicem
+:jestRodzicem rdf:type owl:ObjectProperty ;
+              owl:equivalentProperty :maDziecko ;
+              owl:inverseOf :maRodzica ;
+              rdfs:label "jest rodzicem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestRodzicemRodzica
+:jestRodzicemRodzica rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :maRodzicaRodzica ;
+                     rdfs:label "jest rodzicem rodzica"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestSiostra
+:jestSiostra rdf:type owl:ObjectProperty ;
+             owl:inverseOf :maSiostre ;
+             rdfs:label "jest siostrą"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestStolica
+:jestStolica rdf:type owl:ObjectProperty ;
+             owl:inverseOf :maStoliceW ;
+             rdfs:label "jest stolicą"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestStolicaArcybiskupstwa
+:jestStolicaArcybiskupstwa rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :jestStolica ;
+                           owl:inverseOf :maStoliceArcybiskupstwaW ;
+                           rdfs:domain :miasto ;
+                           rdfs:range :arcybiskupstwo ;
+                           rdfs:label "jest stolicą arcybiskupstwa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestStolicaBiskupstwa
+:jestStolicaBiskupstwa rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :jestStolica ;
+                       owl:inverseOf :maStoliceBiskupstwaW ;
+                       rdfs:domain :miasto ;
+                       rdfs:range :biskupstwo ;
+                       rdfs:label "jest stolicą biskupstwa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestStolicaPanstwa
+:jestStolicaPanstwa rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :jestStolica ;
+                    owl:inverseOf :maStolicePanstwaW ;
+                    rdfs:domain :stolica ;
+                    rdfs:range :panstwo ;
+                    rdfs:label "jest stolicą państwa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestSynem
+:jestSynem rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :jestDzieckiem ;
+           owl:inverseOf :maSyna ;
+           rdfs:label "jest synem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestWRelacji
+:jestWRelacji rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty ;
+              rdfs:label "jest w relacji"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestZenskimPartneremW
+:jestZenskimPartneremW rdf:type owl:ObjectProperty ;
+                       owl:inverseOf :maZenskiegoPartnera ;
+                       rdfs:domain :kobieta ;
+                       rdfs:range :slub ;
+                       rdfs:label "jest żeńskim partnerem w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jestZona
+:jestZona rdf:type owl:ObjectProperty ;
+          owl:inverseOf :maZone ;
+          rdfs:label "jest żoną"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maBabcie
+:maBabcie rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :maRodzicaRodzica ;
+          owl:propertyChainAxiom ( :maRodzica
+                                   :maMatke
+                                 ) ;
+          rdfs:label "ma babcię"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maBrata
+:maBrata rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :nalezyDoRodzenstwa ;
+         rdf:type owl:TransitiveProperty ;
+         rdfs:domain :osoba ;
+         rdfs:range :mezczyzna ;
+         rdfs:label "ma brata"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maCorke
+:maCorke rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :maDziecko ;
+         rdfs:domain :osoba ;
+         rdfs:range :kobieta ;
+         rdfs:label "ma córkę"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maDziadka
+:maDziadka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maRodzicaRodzica ;
+           rdfs:range :mezczyzna ;
+           owl:propertyChainAxiom ( :maRodzica
+                                    :maOjca
+                                  ) ;
+           rdfs:label "ma dziadka"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maDziecko
+:maDziecko rdf:type owl:ObjectProperty ;
+           rdfs:label "ma dziecko"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maKrewnego
+:maKrewnego rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :jestWRelacji ;
+            rdf:type owl:SymmetricProperty ;
+            rdfs:label "ma krewnego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maMatke
+:maMatke rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :maRodzica ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain :osoba ;
+         rdfs:range :kobieta ;
+         rdfs:label "ma matkę"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maMeskiegoPartnera
+:maMeskiegoPartnera rdf:type owl:ObjectProperty ;
+                    rdfs:label "ma męskiego partnera"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maMeza
+:maMeza rdf:type owl:ObjectProperty ;
+        owl:propertyChainAxiom ( :jestZenskimPartneremW
+                                 :maMeskiegoPartnera
+                               ) ;
+        rdfs:label "ma męża"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maOjca
+:maOjca rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :maRodzica ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :osoba ;
+        rdfs:range :mezczyzna ;
+        rdfs:label "ma ojca"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maPlec
+:maPlec rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :osoba ;
+        rdfs:range :plec ;
+        rdfs:label "ma płeć"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maPrzodka
+:maPrzodka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maKrewnego ;
+           rdf:type owl:TransitiveProperty ;
+           rdfs:label "ma przodka"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maRodzica
+:maRodzica rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maPrzodka ;
+           rdfs:label "ma rodzica"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maRodzicaRodzica
+:maRodzicaRodzica rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :maPrzodka ;
+                  owl:propertyChainAxiom ( :maRodzica
+                                           :maRodzica
+                                         ) ;
+                  rdfs:label "ma rodzica rodzica"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maSiostre
+:maSiostre rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :nalezyDoRodzenstwa ;
+           rdf:type owl:TransitiveProperty ;
+           rdfs:domain :osoba ;
+           rdfs:range :kobieta ;
+           rdfs:label "ma siostrę"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maStoliceArcybiskupstwaW
+:maStoliceArcybiskupstwaW rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :maStoliceW ;
+                          rdfs:label "ma stolicę arcybiskupstwa w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maStoliceBiskupstwaW
+:maStoliceBiskupstwaW rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :maStoliceW ;
+                      rdfs:label "ma stolicę biskupstwa w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maStolicePanstwaW
+:maStolicePanstwaW rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :maStoliceW ;
+                   rdfs:label "ma stolicę państwa w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maStoliceW
+:maStoliceW rdf:type owl:ObjectProperty ;
+            rdfs:label "ma stolicę w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maSyna
+:maSyna rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :maDziecko ;
+        rdfs:domain :osoba ;
+        rdfs:range :mezczyzna ;
+        rdfs:label "ma syna"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maUczestnika
+:maUczestnika rdf:type owl:ObjectProperty ;
+              owl:inverseOf :uczestniczyW ;
+              rdfs:label "ma uczestnika"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maZenskiegoPartnera
+:maZenskiegoPartnera rdf:type owl:ObjectProperty ;
+                     rdfs:label "ma żeńskiego partnera"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maZone
+:maZone rdf:type owl:ObjectProperty ;
+        owl:propertyChainAxiom ( :jestMeskimPartneremW
+                                 :maZenskiegoPartnera
+                               ) ;
+        rdfs:label "ma żonę"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#nalezyDoRodzenstwa
+:nalezyDoRodzenstwa rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :maKrewnego ;
+                    rdf:type owl:SymmetricProperty ,
+                             owl:TransitiveProperty ;
+                    rdfs:label "należy do rodzeństwa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#podWladza
+:podWladza rdf:type owl:ObjectProperty ;
+           owl:inverseOf :wlada ;
+           rdfs:label "pod władzą"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#uczestniczyW
+:uczestniczyW rdf:type owl:ObjectProperty ;
+              rdfs:label "uczestniczy w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wlada
+:wlada rdf:type owl:ObjectProperty ;
+       rdfs:label "włada"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladaCesarstwem
+:wladaCesarstwem rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :wlada ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :cesarz
+                                             :cesarzowa
+                                           )
+                             ] ;
+                 rdfs:range :cesarstwo ;
+                 rdfs:label "włada cesarstwem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladaKrolestwem
+:wladaKrolestwem rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :wlada ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :krol
+                                             :krolowa
+                                           )
+                             ] ;
+                 rdfs:range :krolestwo ;
+                 rdfs:label "włada królestwem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladaKsiestwem
+:wladaKsiestwem rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :wlada ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :ksiaze
+                                            :ksiezna
+                                          )
+                            ] ;
+                rdfs:range :ksiestwo ;
+                rdfs:label "włada księstwem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladaMarchia
+:wladaMarchia rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :wlada ;
+              rdfs:domain :margrabia ;
+              rdfs:range :marchia ;
+              rdfs:label "włada marchią"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zawieraSieW
+:zawieraSieW rdf:type owl:ObjectProperty ;
+             rdfs:label "zawiera się w"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zawieraSieWBiskupstwie
+:zawieraSieWBiskupstwie rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :zawieraSieW ;
+                        rdfs:domain :miejsce ;
+                        rdfs:range :biskupstwo ;
+                        rdfs:label "zawiera się w biskupstwie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zawieraSięWArcybiskupstwie
+:zawieraSięWArcybiskupstwie rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :zawieraSieW ;
+                            rdf:type owl:FunctionalProperty ;
+                            rdfs:domain :biskupstwo ;
+                            rdfs:range :arcybiskupstwo ;
+                            rdfs:label "zawiera się w arcybiskupstwie"@pl .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataKoronacji
+:dataKoronacji rdf:type owl:DatatypeProperty ;
+               rdfs:label "data koronacji"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataOdbyciaSię
+:dataOdbyciaSię rdf:type owl:DatatypeProperty ;
+                rdfs:label "data odbycia się"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataPowstania
+:dataPowstania rdf:type owl:DatatypeProperty ;
+               rdfs:label "data powstania"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataSlubu
+:dataSlubu rdf:type owl:DatatypeProperty ;
+           rdfs:label "data ślubu"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataSmierci
+:dataSmierci rdf:type owl:DatatypeProperty ;
+             rdfs:label "data śmierci"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataUrodzenia
+:dataUrodzenia rdf:type owl:DatatypeProperty ;
+               rdfs:label "data urodzenia"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dataZniszczenia
+:dataZniszczenia rdf:type owl:DatatypeProperty ;
+                 rdfs:label "data zniszczenia"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#okresWladania
+:okresWladania rdf:type owl:DatatypeProperty ;
+               rdfs:label "okres władania"@pl .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#agent
+:agent rdf:type owl:Class ;
+       rdfs:subClassOf :glownaDziedzinaOHP ;
+       rdfs:label "Agent"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#arcybiskup
+:arcybiskup rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :wlada ;
+                                  owl:someValuesFrom :arcybiskupstwo
+                                ] ;
+            rdfs:subClassOf :biskup ;
+            rdfs:label "Arcybiskup"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#arcybiskupstwo
+:arcybiskupstwo rdf:type owl:Class ;
+                rdfs:subClassOf :biskupstwo ;
+                rdfs:label "Arcybiskupstwo"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskup
+:biskup rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :wlada ;
+                                                     owl:someValuesFrom :biskupstwo
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :duchowny ;
+        rdfs:label "Biskup"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwo
+:biskupstwo rdf:type owl:Class ;
+            rdfs:subClassOf :nieCzłowiek ;
+            rdfs:label "Biskupstwo"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwa
+:bitwa rdf:type owl:Class ;
+       rdfs:subClassOf :zdarzenie ;
+       rdfs:label "Bitwa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#cesarstwo
+:cesarstwo rdf:type owl:Class ;
+           rdfs:subClassOf :panstwo ;
+           rdfs:label "Cesarstwo"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#cesarz
+:cesarz rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :wlada ;
+                                                     owl:someValuesFrom :cesarstwo
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :wladca ;
+        rdfs:label "Cesarz"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#cesarzowa
+:cesarzowa rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :kobieta
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :wlada ;
+                                                        owl:someValuesFrom :cesarstwo
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :wladca ;
+           rdfs:label "Cesarzowa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#czlowiek
+:czlowiek rdf:type owl:Class ;
+          owl:equivalentClass :osoba ;
+          rdfs:subClassOf :agent ;
+          owl:disjointWith :nieCzłowiek ;
+          rdfs:label "Człowiek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#duchowny
+:duchowny rdf:type owl:Class ;
+          rdfs:subClassOf :czlowiek ;
+          rdfs:label "Duchowny"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dynastia
+:dynastia rdf:type owl:Class ;
+          rdfs:subClassOf :rod ;
+          rdfs:label "Dynastia"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#glownaDziedzinaFHKB
+:glownaDziedzinaFHKB rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#glownaDziedzinaOHP
+:glownaDziedzinaOHP rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#kobieta
+:kobieta rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :maPlec ;
+                                                      owl:someValuesFrom :zenska
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :osoba ;
+         rdfs:label "Kobieta"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacja
+:koronacja rdf:type owl:Class ;
+           rdfs:subClassOf :zdarzenie ;
+           rdfs:label "Koronacja"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#krol
+:krol rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :wlada ;
+                                                   owl:someValuesFrom :krolestwo
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
+      rdfs:subClassOf :wladca ;
+      rdfs:label "Król"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#krolestwo
+:krolestwo rdf:type owl:Class ;
+           rdfs:subClassOf :panstwo ;
+           rdfs:label "Królestwo"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#krolowa
+:krolowa rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :kobieta
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :wlada ;
+                                                      owl:someValuesFrom :krolestwo
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :wladca ;
+         rdfs:label "Królowa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#kronikarz
+:kronikarz rdf:type owl:Class ;
+           rdfs:subClassOf :czlowiek ;
+           rdfs:label "Kronikarz"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ksiaze
+:ksiaze rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :wlada ;
+                                                     owl:someValuesFrom :ksiestwo
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :wladca ;
+        rdfs:label "Książe"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ksiestwo
+:ksiestwo rdf:type owl:Class ;
+          rdfs:subClassOf :panstwo ;
+          rdfs:label "Księstwo"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ksiezna
+:ksiezna rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :kobieta
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :wlada ;
+                                                      owl:someValuesFrom :ksiestwo
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :wladca ;
+         rdfs:label "Księżna"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#marchia
+:marchia rdf:type owl:Class ;
+         rdfs:subClassOf :nieCzłowiek ;
+         rdfs:label "Marchia"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#margrabia
+:margrabia rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :wlada ;
+                                                        owl:someValuesFrom :marchia
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :wladca ;
+           rdfs:label "Margrabia"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#meska
+:meska rdf:type owl:Class ;
+       rdfs:subClassOf :plec ;
+       owl:disjointWith :zenska ;
+       rdfs:label "Męska"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#meskiPotomek
+:meskiPotomek rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :maPrzodka ;
+                                                           owl:someValuesFrom :osoba
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:label "Męski potomek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#meskiPrzodek
+:meskiPrzodek rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :mezczyzna
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :jestPrzodkiem ;
+                                                           owl:someValuesFrom :osoba
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:label "Męski przodek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mezczyzna
+:mezczyzna rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :osoba
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :maPlec ;
+                                                        owl:someValuesFrom :meska
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :osoba ;
+           rdfs:label "Mężczyzna"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miasto
+:miasto rdf:type owl:Class ;
+        rdfs:subClassOf :miejscowosc ;
+        rdfs:label "Miasto"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miejsce
+:miejsce rdf:type owl:Class ;
+         rdfs:subClassOf :glownaDziedzinaOHP ;
+         rdfs:label "Miejsce"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miejscowosc
+:miejscowosc rdf:type owl:Class ;
+             rdfs:subClassOf :miejsce ;
+             owl:disjointWith :region ;
+             rdfs:label "Miejscowość"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#narodziny
+:narodziny rdf:type owl:Class ;
+           rdfs:subClassOf :wydarzenia_z_zycia ;
+           rdfs:label "Narodziny"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#nieCzłowiek
+:nieCzłowiek rdf:type owl:Class ;
+             rdfs:subClassOf :agent ;
+             rdfs:label "Nie-człowiek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#osoba
+:osoba rdf:type owl:Class ;
+       rdfs:subClassOf :glownaDziedzinaFHKB ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :maMatke ;
+                         owl:someValuesFrom :kobieta
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :maOjca ;
+                         owl:someValuesFrom :mezczyzna
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :maPlec ;
+                         owl:someValuesFrom :plec
+                       ] ;
+       owl:disjointWith :plec ;
+       rdfs:label "Osoba"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#panstwo
+:panstwo rdf:type owl:Class ;
+         rdfs:subClassOf :nieCzłowiek ;
+         rdfs:label "Państwo"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#papiez
+:papiez rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :wlada ;
+                              owl:hasValue :stolicaApostolska
+                            ] ;
+        rdfs:subClassOf :duchowny .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#pielgrzymka
+:pielgrzymka rdf:type owl:Class ;
+             rdfs:subClassOf :podroz ;
+             rdfs:label "Pielgrzymka"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#plec
+:plec rdf:type owl:Class ;
+      rdfs:subClassOf :glownaDziedzinaFHKB ;
+      rdfs:label "Płeć"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#podroz
+:podroz rdf:type owl:Class ;
+        rdfs:subClassOf :zdarzenie ;
+        rdfs:label "Podróż"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#potomek
+:potomek rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :maPrzodka ;
+                                                      owl:someValuesFrom :osoba
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:label "Potomek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#przodek
+:przodek rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :jestPrzodkiem ;
+                                                      owl:someValuesFrom :osoba
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:label "Przodek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#region
+:region rdf:type owl:Class ;
+        rdfs:subClassOf :miejsce ;
+        rdfs:label "Region"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rod
+:rod rdf:type owl:Class ;
+     rdfs:subClassOf :glownaDziedzinaOHP ;
+     rdfs:label "Ród"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slub
+:slub rdf:type owl:Class ;
+      rdfs:subClassOf :wydarzenia_z_zycia ;
+      rdfs:label "Ślub"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smierc
+:smierc rdf:type owl:Class ;
+        rdfs:subClassOf :wydarzenia_z_zycia ;
+        rdfs:label "Śmierć"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#stolica
+:stolica rdf:type owl:Class ;
+         rdfs:subClassOf :miasto ;
+         rdfs:label "Stolica"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#traktat
+:traktat rdf:type owl:Class ;
+         rdfs:subClassOf :zdarzenie ;
+         rdfs:label "Traktat"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladca
+:wladca rdf:type owl:Class ;
+        rdfs:subClassOf :czlowiek ;
+        rdfs:label "Władca"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wojna
+:wojna rdf:type owl:Class ;
+       rdfs:subClassOf :zdarzenie ;
+       rdfs:label "Wojna"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wydarzenia_z_zycia
+:wydarzenia_z_zycia rdf:type owl:Class ;
+                    rdfs:subClassOf :zdarzenie ;
+                    rdfs:label "Wydarzenie z życia"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zdarzenie
+:zdarzenie rdf:type owl:Class ;
+           rdfs:subClassOf :glownaDziedzinaOHP ;
+           rdfs:label "Zdarzenie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zenska
+:zenska rdf:type owl:Class ;
+        rdfs:subClassOf :plec ;
+        rdfs:label "Żeńska"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zenskiPotomek
+:zenskiPotomek rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :kobieta
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :maPrzodka ;
+                                                            owl:someValuesFrom :osoba
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:label "Żeński potomek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zenskiPrzodek
+:zenskiPrzodek rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :kobieta
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :jestPrzodkiem ;
+                                                            owl:someValuesFrom :osoba
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:label "Żeński przodek"@pl .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bezprym
+:bezprym rdf:type owl:NamedIndividual ;
+         :maBrata :mieszkoII ,
+                  :otton ;
+         :maOjca :boleslawChrobry ;
+         :maSiostre :corkaChrobregoWydanaZaSwietopelkaZRusi ,
+                    :regelinda ;
+         :wladaKsiestwem :księstwopolskie ;
+         rdfs:label "Bezprym"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupJakubSwinka
+:biskupJakubSwinka rdf:type owl:NamedIndividual ;
+                   rdfs:comment "arcybiskup gnieznienski od 1283" ;
+                   rdfs:label "Jakub Swinka"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupOttonBamberski
+:biskupOttonBamberski rdf:type owl:NamedIndividual ;
+                      rdfs:label "Otton biskup bamberski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoGniezno
+:biskupstwoGniezno rdf:type owl:NamedIndividual ;
+                   :maStoliceArcybiskupstwaW :miastoGniezno ;
+                   :dataPowstania 1000 ;
+                   rdfs:comment "powstalo w 1000r" ;
+                   rdfs:label "Arcybiskupstwo w Gnieznie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoKolobrzeg
+:biskupstwoKolobrzeg rdf:type owl:NamedIndividual ;
+                     :maStoliceBiskupstwaW :miastoKolobrzeg ;
+                     :zawieraSięWArcybiskupstwie :biskupstwoGniezno ;
+                     :dataPowstania 1000 ;
+                     :dataZniszczenia 1005 ;
+                     rdfs:comment "powstalo w 1000r, zostalo zniszczone w 1005" ;
+                     rdfs:label "biskupstwo w Kolobrzegu"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoKrakow
+:biskupstwoKrakow rdf:type owl:NamedIndividual ;
+                  :maStoliceBiskupstwaW :miastoKrakow ;
+                  :zawieraSięWArcybiskupstwie :biskupstwoGniezno ;
+                  :dataPowstania 1000 ;
+                  rdfs:comment "powstalo w 1000r" ;
+                  rdfs:label "biskupstwo w Krakowie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoMagdeburg
+:biskupstwoMagdeburg rdf:type owl:NamedIndividual ;
+                     :maStoliceArcybiskupstwaW :magdeburg ;
+                     :dataPowstania 961 ;
+                     rdfs:comment "powstalo w 961 za zgoda papieza Jana XII" ;
+                     rdfs:label "Arcybiskupstwo w Magdeburgu"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoOlomunieckie
+:biskupstwoOlomunieckie rdf:type owl:NamedIndividual ;
+                        rdfs:label "biskupstwo olomunieckie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoPlock
+:biskupstwoPlock rdf:type owl:NamedIndividual ;
+                 :maStoliceBiskupstwaW :miastoPlock ;
+                 :dataPowstania 1075 ;
+                 rdfs:comment "powstalo w 1075" ;
+                 rdfs:label "biskupstwo w Plocku" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoPoznan
+:biskupstwoPoznan rdf:type owl:NamedIndividual ;
+                  :maStoliceBiskupstwaW :miastoPoznan ;
+                  :zawieraSięWArcybiskupstwie :biskupstwoGniezno ;
+                  :dataPowstania 965 ;
+                  rdfs:comment "prawdopodobnie powstalo 965 r już w 968 roku biskupstwo misyjne stało się biskupstwem normalnym" ;
+                  rdfs:label "biskupstwo w Poznaniu"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoPraskie
+:biskupstwoPraskie rdf:type owl:NamedIndividual ;
+                   :maStoliceBiskupstwaW :miastoPraga ;
+                   :dataPowstania "973/974" ;
+                   rdfs:comment "wyodrębnienie biskupstwa praskiego z niemieckiej organizacji kościelnej w 973/974 roku." ;
+                   rdfs:label "biskupstwo praskie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#biskupstwoWroclaw
+:biskupstwoWroclaw rdf:type owl:NamedIndividual ;
+                   :maStoliceBiskupstwaW :wroclaw ;
+                   :zawieraSięWArcybiskupstwie :biskupstwoGniezno ;
+                   :dataPowstania 1000 ;
+                   rdfs:comment "powstalo w 1000r" ;
+                   rdfs:label "biskupstwo we Wroclaw"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaNadMozgawa
+:bitwaNadMozgawa rdf:type owl:NamedIndividual ;
+                 rdfs:label "Bitwa nad rzeka Mozgawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaPodBrzesciem
+:bitwaPodBrzesciem rdf:type owl:NamedIndividual ;
+                   rdfs:label "Bitwa pod Brzesciem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaPodCedynia
+:bitwaPodCedynia rdf:type owl:NamedIndividual ;
+                 :dataOdbyciaSię 972 ;
+                 rdfs:label "Bitwa pod Cedynia w 972 roku"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaPodGlogowem
+:bitwaPodGlogowem rdf:type owl:NamedIndividual ;
+                  rdfs:label "Bitwa pod Glogowem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaPodSuchodolem
+:bitwaPodSuchodolem rdf:type owl:NamedIndividual ;
+                    rdfs:label "Bitwa pod Suchodolem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaPodWolinem
+:bitwaPodWolinem rdf:type owl:NamedIndividual ;
+                 :dataOdbyciaSię 964 ;
+                 rdfs:label "Bitwa pod Wolinem w 964 roku"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#bitwaPodWroclawiem
+:bitwaPodWroclawiem rdf:type owl:NamedIndividual ;
+                    rdfs:label "Bitwa pod Wroclawiem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawChrobry
+:boleslawChrobry rdf:type owl:NamedIndividual ;
+                 :jestSynem :dobrawa ,
+                            :mieszkoI ;
+                 :maMatke :dobrawa ;
+                 :maOjca :mieszkoI ;
+                 :maSiostre :sygryda ;
+                 :wladaKrolestwem :krolestwopolskie ;
+                 :wladaKsiestwem :księstwopolskie ;
+                 rdfs:comment "slub z nn corka rygdaga +/- 980- 983, slub z Emilda 987r, wladal 992‒1025, w roku 1025 koronacja na krola polski, 1018 slub z oda, konkubinat z Przedslawa 1019r, 1025r czerwiec smierc" ;
+                 rdfs:label "Boleslaw Chrobry"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawIICzeski
+:boleslawIICzeski rdf:type owl:NamedIndividual ;
+                  :maSiostre :dobrawa ;
+                  rdfs:comment "971/972‒999" ;
+                  rdfs:label "Boleslaw II czeski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawIIIRudy
+:boleslawIIIRudy rdf:type owl:NamedIndividual ;
+                 :maBrata :jaromir ;
+                 :maOjca :boleslawIICzeski ;
+                 rdfs:label "Bolesław III Rudy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawKedzierzawy
+:boleslawKedzierzawy rdf:type owl:NamedIndividual ;
+                     :maBrata :henrykSandomierski ,
+                              :kazimierzSprawiedliwy ,
+                              :mieszkoStary ,
+                              :wladyslawIIWygnaniec ;
+                     :maOjca :boleslawKrzywousty ;
+                     rdfs:comment "smierc 1173, rzadzil chyba od 1146" ;
+                     rdfs:label "Boleslaw Kedzierzawy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawKrzywousty
+:boleslawKrzywousty rdf:type owl:NamedIndividual ;
+                    :maBrata :zbigniew ;
+                    :maOjca :wladyslawIHerman ;
+                    rdfs:comment "w latach zaś 1122‒1124 narzucił swą zwierzchność, syb wladyslawa I hermana, brat zbigniewa, W 1138 roku Krzywousty przekazał rządy w różnych dzielnicach państwa swym synom, zachowując jednakże instytucję księcia zwierzchniego, smierc prawdopodobnie w 1138" ;
+                    rdfs:label "Boleslaw Krzywousty"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawPobozny
+:boleslawPobozny rdf:type owl:NamedIndividual ;
+                 rdfs:label "Boleslaw Pobozny"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawSmialy
+:boleslawSmialy rdf:type owl:NamedIndividual ;
+                :maBrata :mieszko ,
+                         :wladyslawIHerman ;
+                :maOjca :kazimierzOdnowiciel ;
+                :wladaKsiestwem :księstwopolskie ;
+                rdfs:comment "zwany rowniez Szczodrym, sny kazimierza odnowiciela, brat Władysława I Hermana i Mieszka, obja wladze w 1058, przeniusl stolice do krakowa, w 1079 roku musial uchodzić z kraju, smierc 1081" ;
+                rdfs:label "Boleslaw Smialy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawSynMieszkaStarego
+:boleslawSynMieszkaStarego rdf:type owl:NamedIndividual ;
+                           :maBrata :wladyslawLaskonogi ;
+                           :maOjca :mieszkoStary ;
+                           rdfs:label "Boleslaw syn Mieszka Starego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawWstydliwy
+:boleslawWstydliwy rdf:type owl:NamedIndividual ;
+                   rdfs:label "Boleslaw Wstydliwy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#boleslawWysoki
+:boleslawWysoki rdf:type owl:NamedIndividual ;
+                :maBrata :mieszkoPlatonogi ;
+                :maOjca :wladyslawIIWygnaniec ;
+                rdfs:comment "powrocil wraz z bratem w 1163 roku odzyskawszy swe działy na Śląsku" ;
+                rdfs:label "Boleslaw Wysoki"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#brunoZKwerfurtu
+:brunoZKwerfurtu rdf:type owl:NamedIndividual ;
+                 rdfs:comment "zgina w czasie misji u jadzwingow zostal swietym" ;
+                 rdfs:label "Bruno z Kwerfurtu"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#brzetyslaw
+:brzetyslaw rdf:type owl:NamedIndividual ;
+            rdfs:comment "książe czeski, napadł ma Polskę zachodnią po 1038 roku zaja śląsk" ;
+            rdfs:label "Brzetyslaw"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#budziszyn
+:budziszyn rdf:type owl:NamedIndividual ;
+           rdfs:label "Budziszyn"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#chrzestPolski
+:chrzestPolski rdf:type owl:NamedIndividual ;
+               :dataOdbyciaSię 966 ;
+               rdfs:comment "966 r" ;
+               rdfs:label "Chrzest Polski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#corkaChrobregoWydanaZaSwietopelkaZRusi
+:corkaChrobregoWydanaZaSwietopelkaZRusi rdf:type owl:NamedIndividual ;
+                                        :maBrata :bezprym ,
+                                                 :mieszkoII ,
+                                                 :otton ;
+                                        :maOjca :boleslawChrobry ;
+                                        :maSiostre :regelinda ;
+                                        rdfs:label "NN Corka Chrobrego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#cyryl
+:cyryl rdf:type owl:NamedIndividual ;
+       rdfs:comment "mnich grecki rozpowszechniajacy wiare chrzescijanska na terenach slowianskich przed chrztem polski" ;
+       rdfs:label "Cyryl"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#czcibor
+:czcibor rdf:type owl:NamedIndividual ;
+         :maBrata :mieszkoI ;
+         :maOjca :siemomyslPiast ;
+         rdfs:comment "zgina w bitwie pod Cedynia w 972r" ;
+         rdfs:label "Czcibor"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dobrawa
+:dobrawa rdf:type owl:NamedIndividual ;
+         :maBrata :boleslawIICzeski ;
+         rdfs:comment "przybyla do polski w 965 r, smierc 977" ;
+         rdfs:label "Dobrawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#dobromir
+:dobromir rdf:type owl:NamedIndividual ;
+          rdfs:comment "ojciec Emildy" ;
+          rdfs:label "Dobromir"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ekkehard
+:ekkehard rdf:type owl:NamedIndividual ;
+          :wlada :marchiaMisnienska ;
+          rdfs:comment "zostal zamordowany prawdopodobnie w 1002, margrabia marchii misnieniskiej" ;
+          rdfs:label "Ekkehard"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#emilda
+:emilda rdf:type owl:NamedIndividual ;
+        :maOjca :dobromir ;
+        rdfs:comment "slub z chrobrym 987r, corka Dobromira" ;
+        rdfs:label "Emilda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#erykZwycieski
+:erykZwycieski rdf:type owl:NamedIndividual ;
+               rdfs:comment "slub z sygryda okolo 983 roku" ;
+               rdfs:label "Eryk Zwycieski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#fryderykIBarbarossa
+:fryderykIBarbarossa rdf:type owl:NamedIndividual ;
+                     rdfs:label "Fryderyk I Barbarossa"@pl ,
+                                "krol niemiecki od 1152, cesarz od 1155" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#geron
+:geron rdf:type owl:NamedIndividual ;
+       rdfs:comment "marchia wschodnia, zmarl w 965r" ;
+       rdfs:label "Geron"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#grodSandomierz
+:grodSandomierz rdf:type owl:NamedIndividual ;
+                rdfs:label "Sandomierz"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#grodSantok
+:grodSantok rdf:type owl:NamedIndividual ;
+            rdfs:label "grod w Santoku"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#grzymislawa
+:grzymislawa rdf:type owl:NamedIndividual ;
+             rdfs:label "Grzymislawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#guncelin
+:guncelin rdf:type owl:NamedIndividual ;
+          :maBrata :ekkehard ;
+          rdfs:label "Guncelin"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykBrodaty
+:henrykBrodaty rdf:type owl:NamedIndividual ;
+               rdfs:label "Henryk Brodaty"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykGlogowski
+:henrykGlogowski rdf:type owl:NamedIndividual ;
+                 rdfs:label "Henryk glogowski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykII
+:henrykII rdf:type owl:NamedIndividual ;
+          :maOjca :henrykKlotnikBawarski ;
+          rdfs:comment "panowal 1002‒1024, 1024 smierc" ;
+          rdfs:label "Henryk II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykIV
+:henrykIV rdf:type owl:NamedIndividual ;
+          rdfs:comment "panowal 1056‒1106, w 1083 roku zajął Rzym, zmuszając papieża do ucieczki" ;
+          rdfs:label "Henryk IV"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykKlotnikBawarski
+:henrykKlotnikBawarski rdf:type owl:NamedIndividual ;
+                       rdfs:comment "ksiaze bawarii" ;
+                       rdfs:label "Henryk Klotnik bawarski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykPobozny
+:henrykPobozny rdf:type owl:NamedIndividual ;
+               rdfs:label "Henryk Pobozny"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykPrawy
+:henrykPrawy rdf:type owl:NamedIndividual ;
+             rdfs:label "Henryk Prawy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykSandomierski
+:henrykSandomierski rdf:type owl:NamedIndividual ;
+                    :maBrata :boleslawKedzierzawy ,
+                             :kazimierzSprawiedliwy ,
+                             :mieszkoStary ,
+                             :wladyslawIIWygnaniec ;
+                    :maOjca :boleslawKrzywousty ;
+                    rdfs:label "Henryk Sandomierski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#henrykV
+:henrykV rdf:type owl:NamedIndividual ;
+         :maOjca :henrykIV ;
+         rdfs:comment "król niemiecki od 1106 roku, cesarz od 1111 do 1125 roku" ;
+         rdfs:label "Henryk V"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#hermanZMisni
+:hermanZMisni rdf:type owl:NamedIndividual ;
+              :maOjca :ekkehard ;
+              :maSiostre :oda ;
+              :wlada :marchiaMisnienska ;
+              rdfs:comment "maz regelindy, syn ekkeharda" ;
+              rdfs:label "Herman z Misni"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#hodon
+:hodon rdf:type owl:NamedIndividual ;
+       rdfs:comment "marchia wschodnia od 965" ;
+       rdfs:label "Hodon"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#hugoKapet
+:hugoKapet rdf:type owl:NamedIndividual ;
+           rdfs:comment "panowal okolo 987‒996 założyciel dynastii Kapetyngów, krol francji" ;
+           rdfs:label "Hugo Kapet"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ibrahimIbnJakub
+:ibrahimIbnJakub rdf:type owl:NamedIndividual ;
+                 rdfs:comment "podróżnik arabski zbierający informacje o Słowianach w otoczeniu cesarza Ottona I" ;
+                 rdfs:label "Ibrahim ibn Jakub"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jaromir
+:jaromir rdf:type owl:NamedIndividual ;
+         :maBrata :boleslawIIIRudy ;
+         :maOjca :boleslawIICzeski ;
+         rdfs:label "Jaromir"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jaroslawMadry
+:jaroslawMadry rdf:type owl:NamedIndividual ;
+               :maBrata :swietopelkSynWladcyRusi ;
+               :maOjca :wlodzimierzIWielki ;
+               :maSiostre :przedslawa ;
+               rdfs:comment "syn wlodzimierza wielkiego" ;
+               rdfs:label "Jaroslaw Madry"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jaroslawSynBoleslawaWysokiego
+:jaroslawSynBoleslawaWysokiego rdf:type owl:NamedIndividual ;
+                               :maOjca :boleslawWysoki ;
+                               rdfs:label "Jaroslaw syn Boleslawa Wysokiego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#jordan
+:jordan rdf:type owl:NamedIndividual ;
+        rdfs:comment "Biskup misyjny z siedziba w poznaniu" ;
+        rdfs:label "Jordan"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#kazimierzOdnowiciel
+:kazimierzOdnowiciel rdf:type owl:NamedIndividual ;
+                     :maMatke :rycheza ;
+                     :maOjca :mieszkoII ;
+                     :wladaKsiestwem :księstwopolskie ;
+                     rdfs:comment "syn mieszka II i rychezy, Około 1037 roku Kazimierz musiał uchodzić z kraju, Kazimierz w 1039 roku wrócił do kraju, Zmarł w 1058 roku" ;
+                     rdfs:label "Kazimierz Odnowiciel"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#kazimierzSprawiedliwy
+:kazimierzSprawiedliwy rdf:type owl:NamedIndividual ;
+                       :maBrata :boleslawKedzierzawy ,
+                                :henrykSandomierski ,
+                                :mieszkoStary ,
+                                :wladyslawIIWygnaniec ;
+                       :maOjca :boleslawKrzywousty ;
+                       rdfs:comment "obja wladze w 1177, zmarl w 1194" ;
+                       rdfs:label "Kazimierz Sprawiedliwy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#kazimierzWielki
+:kazimierzWielki rdf:type owl:NamedIndividual ;
+                 rdfs:label "Kazimierz Wielki"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#konradII
+:konradII rdf:type owl:NamedIndividual ;
+          rdfs:comment "cesarz niemiecki, panował w latach 1024‒1039" ;
+          rdfs:label "Konrad II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#konradIII
+:konradIII rdf:type owl:NamedIndividual ;
+           rdfs:comment "krol niemiecki, smierc 1152" ;
+           rdfs:label "Konrad III"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#konradMazowiecki
+:konradMazowiecki rdf:type owl:NamedIndividual ;
+                  rdfs:label "Konrad Mazowiecki"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacjaBoleslawaCrobregoNaKrolaPolski
+:koronacjaBoleslawaCrobregoNaKrolaPolski rdf:type owl:NamedIndividual ;
+                                         rdfs:label "Koronacja Bleslawa Chrobrego na Krola Polski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacjaBoleslawaSmialegoNaKrolaPolski
+:koronacjaBoleslawaSmialegoNaKrolaPolski rdf:type owl:NamedIndividual ;
+                                         rdfs:label "Koronacja Boleslawa Smialego na Krola Polski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacjaHenrykaVNaCesarzaNiemiec
+:koronacjaHenrykaVNaCesarzaNiemiec rdf:type owl:NamedIndividual ;
+                                   rdfs:label "Koronacja Henryka V na Cesarza Niemiec"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacjaHenrykaVNaKrolaNiemiec
+:koronacjaHenrykaVNaKrolaNiemiec rdf:type owl:NamedIndividual ;
+                                 rdfs:label "Koronacja Henryka V na Krola Niemiec"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacjaOttonaINaCesarzaRzymskiego
+:koronacjaOttonaINaCesarzaRzymskiego rdf:type owl:NamedIndividual ;
+                                     rdfs:label "Koronacja Ottona I na Cesarza Rzymskiego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#koronacjaPrzemyslaIINaKrolaPolski
+:koronacjaPrzemyslaIINaKrolaPolski rdf:type owl:NamedIndividual ;
+                                   rdfs:label "koronacja Przemysla II na Krola Polski"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#krolestwopolskie
+:krolestwopolskie rdf:type owl:NamedIndividual ;
+                  :maStolicePanstwaW :miastoGniezno ;
+                  rdfs:label "Krolestwo Polskie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ksieznaHelena
+:ksieznaHelena rdf:type owl:NamedIndividual ;
+               rdfs:label "Ksiezna Helena"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#księstwopolskie
+:księstwopolskie rdf:type owl:NamedIndividual ;
+                 :maStolicePanstwaW :miastoGniezno ;
+                 rdfs:label "Ksiestwo Polskie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#lambert
+:lambert rdf:type owl:NamedIndividual ;
+         :jestBratem :mieszkoSynMieszkaI ,
+                     :swietopelksynMieszkaI ;
+         :jestSynem :mieszkoI ,
+                    :odaDytrykowna ;
+         :maMatke :odaDytrykowna ;
+         :maOjca :mieszkoI ;
+         rdfs:comment "syn mieszka I i ody" ;
+         rdfs:label "Lambert"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#leszekBialy
+:leszekBialy rdf:type owl:NamedIndividual ;
+             :maMatke :ksieznaHelena ;
+             :maOjca :kazimierzSprawiedliwy ;
+             :dataSmierci 1227 ;
+             rdfs:comment "obja wladze w 1194 w wieku 8 lat" ;
+             rdfs:label "Leszek Bialy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#leszekCzarny
+:leszekCzarny rdf:type owl:NamedIndividual ;
+              rdfs:label "Leszek Czarny"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#lotarIII
+:lotarIII rdf:type owl:NamedIndividual ;
+          rdfs:label "Lotar III"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#magdeburg
+:magdeburg rdf:type owl:NamedIndividual ;
+           rdfs:label "Magdeburg"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#marchiaBrandenburska
+:marchiaBrandenburska rdf:type owl:NamedIndividual ,
+                               :marchia ;
+                      rdfs:label "Marchia Brandenburska"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#marchiaMisnienska
+:marchiaMisnienska rdf:type owl:NamedIndividual ;
+                   rdfs:label "marchia Misnienska"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#marchiaPolnocna
+:marchiaPolnocna rdf:type owl:NamedIndividual ,
+                          :marchia ;
+                 rdfs:label "Marchia Polnocna"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#marchiaWschodnia
+:marchiaWschodnia rdf:type owl:NamedIndividual ,
+                           :marchia ;
+                  rdfs:label "Marchia Wschodnia" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#maslaw
+:maslaw rdf:type owl:NamedIndividual ;
+        rdfs:comment "oderwał Mazowsze od państwa Kazimierza Odnowiciela (1034-1035), Mozny" ;
+        rdfs:label "Maslaw"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#metody
+:metody rdf:type owl:NamedIndividual ;
+        rdfs:comment "mnich grecki rozpowszechniajacy wiare chrzescijanska na terenach slowianskich przed chrztem polski" ;
+        rdfs:label "Metody"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoGasawa
+:miastoGasawa rdf:type owl:NamedIndividual ;
+              rdfs:label "Gasawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoGdansk
+:miastoGdansk rdf:type owl:NamedIndividual ;
+              rdfs:label "Gdansk"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoGniezno
+:miastoGniezno rdf:type owl:NamedIndividual ;
+               rdfs:label "Gniezno"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoKamien
+:miastoKamien rdf:type owl:NamedIndividual ;
+              rdfs:label "Kamien"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoKijow
+:miastoKijow rdf:type owl:NamedIndividual ;
+             rdfs:label "Kijow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoKolobrzeg
+:miastoKolobrzeg rdf:type owl:NamedIndividual ;
+                 :zawieraSieWBiskupstwie :biskupstwoKolobrzeg ;
+                 rdfs:label "Kolobrzeg"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoKonstantynopol
+:miastoKonstantynopol rdf:type owl:NamedIndividual ;
+                      rdfs:label "Konstantynopol"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoKrakow
+:miastoKrakow rdf:type owl:NamedIndividual ;
+              :jestStolicaPanstwa :księstwopolskie ;
+              :zawieraSieWBiskupstwie :biskupstwoKrakow ;
+              rdfs:label "Krakow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoPlock
+:miastoPlock rdf:type owl:NamedIndividual ;
+             :zawieraSieWBiskupstwie :biskupstwoPlock ;
+             rdfs:label "Plock"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoPoznan
+:miastoPoznan rdf:type owl:NamedIndividual ;
+              :zawieraSieWBiskupstwie :biskupstwoPoznan ;
+              rdfs:label "Poznan"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoPraga
+:miastoPraga rdf:type owl:NamedIndividual ;
+             :zawieraSieWBiskupstwie :biskupstwoPraskie ;
+             rdfs:label "Praga"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoPrzemysl
+:miastoPrzemysl rdf:type owl:NamedIndividual ;
+                rdfs:comment "miasto przemyśl" ;
+                rdfs:label "Przemysl"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoRzym
+:miastoRzym rdf:type owl:NamedIndividual ;
+            rdfs:label "Rzym"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoSzczecin
+:miastoSzczecin rdf:type owl:NamedIndividual ;
+                rdfs:label "Szczecin"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#miastoWolin
+:miastoWolin rdf:type owl:NamedIndividual ;
+             rdfs:label "Wolin"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszko
+:mieszko rdf:type owl:NamedIndividual ;
+         :maBrata :boleslawSmialy ,
+                  :wladyslawIHerman ;
+         :maOjca :kazimierzOdnowiciel ;
+         rdfs:label "Mieszko syn Kazimierza Odnowiciela"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszkoI
+:mieszkoI rdf:type owl:NamedIndividual ;
+          :maBrata :czcibor ;
+          :maOjca :siemomyslPiast ;
+          :wladaKsiestwem :księstwopolskie ;
+          rdfs:comment "slub z dobrawa 965-966, slub z oda 980, smierc 992r" ;
+          rdfs:label "Mieszko I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszkoII
+:mieszkoII rdf:type owl:NamedIndividual ;
+           :maBrata :bezprym ,
+                    :otton ;
+           :maOjca :boleslawChrobry ;
+           :maSiostre :corkaChrobregoWydanaZaSwietopelkaZRusi ,
+                      :regelinda ;
+           :wladaKsiestwem :księstwopolskie ;
+           rdfs:comment "zona rycheza, objecie wladzy 1025, utrata tronu polski prawdopodobnie 1031, ponowne objecie wladzy w 1032, smierc 1034" ;
+           rdfs:label "Mieszko II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszkoPlatonogi
+:mieszkoPlatonogi rdf:type owl:NamedIndividual ;
+                  :maBrata :boleslawWysoki ;
+                  :maOjca :wladyslawIIWygnaniec ;
+                  rdfs:comment "powrocil wraz z bratem w 1163 roku odzyskawszy swe działy na Śląsku" ;
+                  rdfs:label "Mieszko Platonogi"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszkoStary
+:mieszkoStary rdf:type owl:NamedIndividual ;
+              :maBrata :boleslawKedzierzawy ,
+                       :henrykSandomierski ,
+                       :kazimierzSprawiedliwy ,
+                       :wladyslawIIWygnaniec ;
+              :maOjca :boleslawKrzywousty ;
+              rdfs:comment "rzadzil (1173‒1177)" ;
+              rdfs:label "Mieszko Stary"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszkoSynBoleslawaSmialego
+:mieszkoSynBoleslawaSmialego rdf:type owl:NamedIndividual ;
+                             :maOjca :boleslawSmialy ;
+                             rdfs:label "Mieszko syn Boleslawa Smialego" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mieszkoSynMieszkaI
+:mieszkoSynMieszkaI rdf:type owl:NamedIndividual ;
+                    :jestSynem :mieszkoI ,
+                               :odaDytrykowna ;
+                    :maMatke :odaDytrykowna ;
+                    :maOjca :mieszkoI ;
+                    rdfs:comment "syn mieszka I i ody" ;
+                    rdfs:label "Mieszko syn Mieszka I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#mszczujII
+:mszczujII rdf:type owl:NamedIndividual ;
+           rdfs:label "Mszczuj II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#oda
+:oda rdf:type owl:NamedIndividual ;
+     :maBrata :hermanZMisni ;
+     :maOjca :ekkehard ;
+     rdfs:comment "corka ekkenharda, siostra hermana z misni, slub z chrobrym 1018" ;
+     rdfs:label "Oda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#odaDytrykowna
+:odaDytrykowna rdf:type owl:NamedIndividual ;
+               :maOjca :teodoryk ;
+               rdfs:comment "slub z mieszkiem 980, ojciec Teodoryk" ;
+               rdfs:label "Oda Dytrykowna"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#odylen
+:odylen rdf:type owl:NamedIndividual ;
+        rdfs:label "Odylen"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#okoliceCedyni
+:okoliceCedyni rdf:type owl:NamedIndividual ;
+               rdfs:label "Okolice Cedyni" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#otton
+:otton rdf:type owl:NamedIndividual ;
+       :maBrata :bezprym ,
+                :mieszkoII ;
+       :maOjca :boleslawChrobry ;
+       :maSiostre :corkaChrobregoWydanaZaSwietopelkaZRusi ,
+                  :regelinda ;
+       rdfs:label "Otton"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ottonI
+:ottonI rdf:type owl:NamedIndividual ;
+        rdfs:comment "z rodu Ludolfingów, panowal 936‒973, koronowania się Ottona I w 962 roku na cesarza rzymskiego" ;
+        rdfs:label "Otton I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ottonII
+:ottonII rdf:type owl:NamedIndividual ;
+         :maOjca :ottonI ;
+         rdfs:comment "panowal 973‒983" ;
+         rdfs:label "Otton II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ottonIII
+:ottonIII rdf:type owl:NamedIndividual ;
+          :maMatke :teofano ;
+          :maOjca :ottonII ;
+          rdfs:comment "panowal 983‒1002, w 995 roku ‒ w wieku 15 lat obial osobiste rzady, smierc 1002" ;
+          rdfs:label "Otton III"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#papiezGrzegorzVII
+:papiezGrzegorzVII rdf:type owl:NamedIndividual ;
+                   rdfs:label "Grzegorz VII"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#papiezJanXII
+:papiezJanXII rdf:type owl:NamedIndividual ;
+              :wlada :stolicaApostolska ;
+              rdfs:comment "papiez" ;
+              rdfs:label "Jan XII"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#papiezSylvesterII
+:papiezSylvesterII rdf:type owl:NamedIndividual ;
+                   :wlada :stolicaApostolska ;
+                   rdfs:comment "Gerberta z Aurillac w 999 roku został papieżem, smierc 1003" ;
+                   rdfs:label "Sylwester II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#papiezbenedyktVII
+:papiezbenedyktVII rdf:type owl:NamedIndividual ;
+                   :wlada :stolicaApostolska ;
+                   :dataSmierci 1024 ;
+                   rdfs:comment "smierc 1024" ;
+                   rdfs:label "Benedykt VIII"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#piotrWlostowic
+:piotrWlostowic rdf:type owl:NamedIndividual ;
+                rdfs:label "Piotr Wlostowic"@pl ,
+                           "doradca krzywoustego" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#pokojWBudziszynie
+:pokojWBudziszynie rdf:type owl:NamedIndividual ;
+                   rdfs:label "Pokoj w Budziszynie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#pokojWPoznaniu
+:pokojWPoznaniu rdf:type owl:NamedIndividual ;
+                rdfs:label "Pokoj w Poznaniu 1005"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#przedslawa
+:przedslawa rdf:type owl:NamedIndividual ;
+            :maBrata :jaroslawMadry ,
+                     :swietopelkSynWladcyRusi ;
+            :maOjca :wlodzimierzIWielki ;
+            rdfs:comment "konkubina chrobrego, siostra jaroslawa madrego i swietopelka z rusi" ;
+            rdfs:label "Przedslawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#przemyslI
+:przemyslI rdf:type owl:NamedIndividual ;
+           rdfs:label "Przemysl I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#przemyslII
+:przemyslII rdf:type owl:NamedIndividual ;
+            :maOjca :przemyslI ;
+            rdfs:label "Przemysl II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#przybywoj
+:przybywoj rdf:type owl:NamedIndividual ;
+           rdfs:label "Przybywoj"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#radzimGaudenty
+:radzimGaudenty rdf:type owl:NamedIndividual ;
+                :maBrata :swWojciech ;
+                :wlada :biskupstwoGniezno ;
+                rdfs:comment "arcybiskup gnieznienski" ;
+                rdfs:label "Radzim-Gaudenty"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#regelinda
+:regelinda rdf:type owl:NamedIndividual ;
+           :maBrata :bezprym ,
+                    :mieszkoII ,
+                    :otton ;
+           :maOjca :boleslawChrobry ;
+           :maSiostre :corkaChrobregoWydanaZaSwietopelkaZRusi ;
+           rdfs:comment "slub z hermanem z misni, corka chrobrego" ;
+           rdfs:label "Regelinda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rodHaldensleben
+:rodHaldensleben rdf:type owl:NamedIndividual ;
+                 rdfs:label "Haldensleben"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rodKapetyngow
+:rodKapetyngow rdf:type owl:NamedIndividual ;
+               rdfs:comment "rod francuski, hugo kapet" ;
+               rdfs:label "Kapetyngow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rodLudolfingow
+:rodLudolfingow rdf:type owl:NamedIndividual ;
+                rdfs:comment "dynastia rządziła w Niemczech w latach 919‒1024, otton I, otton II, otton III, Henryk II (ten ostatni boczna linia)" ;
+                rdfs:label "Ludolfingow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rodPiastow
+:rodPiastow rdf:type owl:NamedIndividual ;
+            rdfs:label "Pisatow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rodPrzemyslidow
+:rodPrzemyslidow rdf:type owl:NamedIndividual ;
+                 rdfs:comment "dynastia panujaca w czechach, dobrawa, boleslaw II czeski, boleslaw III rudy, jaromir, brzetyslaw" ;
+                 rdfs:label "Przemyslidow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rodSlawnikowicow
+:rodSlawnikowicow rdf:type owl:NamedIndividual ;
+                  rdfs:label "Slawnikowicow"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rozbicieDzielnicowe
+:rozbicieDzielnicowe rdf:type owl:NamedIndividual ;
+                     rdfs:label "Rozbicie Dzielnicowe"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#rycheza
+:rycheza rdf:type owl:NamedIndividual ;
+         rdfs:comment "zona Mieszka II, wnuczka Ottona II" ;
+         rdfs:label "Rycheza"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#ryszardIBezTrwogi
+:ryszardIBezTrwogi rdf:type owl:NamedIndividual ;
+                   rdfs:comment "942‒996" ,
+                                "raczej do usuniecia" ;
+                   rdfs:label "Ryszard I bez Trwogi"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#sieciech
+:sieciech rdf:type owl:NamedIndividual ;
+          rdfs:comment "potezny mozny rzadzil w imieniu Wladyslawa I Hermana w latach 1079-1097" ;
+          rdfs:label "wojewoda Sieciech"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#siemomyslPiast
+:siemomyslPiast rdf:type owl:NamedIndividual ;
+                rdfs:label "Siemomysl Piast"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubBoleslawaChrobregoZEmilda
+:slubBoleslawaChrobregoZEmilda rdf:type owl:NamedIndividual ;
+                               :maMeskiegoPartnera :boleslawChrobry ;
+                               :maZenskiegoPartnera :emilda ;
+                               rdfs:label "slub Boleslawa Chrobrego z Emilda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubBoleslawaChrobregoZOda
+:slubBoleslawaChrobregoZOda rdf:type owl:NamedIndividual ;
+                            :maMeskiegoPartnera :boleslawChrobry ;
+                            :maZenskiegoPartnera :oda ;
+                            rdfs:label "slub Boleslawa Chrobrego z Oda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubErykaZwycieskiegoZSygryda
+:slubErykaZwycieskiegoZSygryda rdf:type owl:NamedIndividual ;
+                               :maMeskiegoPartnera :erykZwycieski ;
+                               :maZenskiegoPartnera :sygryda ;
+                               :dataSlubu 983 ;
+                               rdfs:label "slub Eryk Zwycięskiego z Sygryda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubMieszkaIIZRycheza
+:slubMieszkaIIZRycheza rdf:type owl:NamedIndividual ;
+                       :maMeskiegoPartnera :mieszkoII ;
+                       :maZenskiegoPartnera :rycheza ;
+                       rdfs:label "slub Mieszka II z Rycheza"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubMieszkaIZDobrawa
+:slubMieszkaIZDobrawa rdf:type owl:NamedIndividual ;
+                      :maMeskiegoPartnera :mieszkoI ;
+                      :maZenskiegoPartnera :dobrawa ;
+                      :dataSlubu 965 ;
+                      rdfs:label "slub Mieszka I z Dobrawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubMieszkaIZOda
+:slubMieszkaIZOda rdf:type owl:NamedIndividual ;
+                  :maMeskiegoPartnera :mieszkoI ;
+                  :maZenskiegoPartnera :odaDytrykowna ;
+                  :dataSlubu 980 ;
+                  rdfs:label "slub Mieszka I z Oda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubNNZSwietopelkiem
+:slubNNZSwietopelkiem rdf:type owl:NamedIndividual ;
+                      :maMeskiegoPartnera :swietopelkSynWladcyRusi ;
+                      :maZenskiegoPartnera :corkaChrobregoWydanaZaSwietopelkaZRusi ;
+                      rdfs:label "slub NN z Swietopelkiem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#slubRegelindyZHermanem
+:slubRegelindyZHermanem rdf:type owl:NamedIndividual ;
+                        :maMeskiegoPartnera :hermanZMisni ;
+                        :maZenskiegoPartnera :regelinda ;
+                        rdfs:label "slub Regelind z Hermanem"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercBenedyktaVIII
+:smiercBenedyktaVIII rdf:type owl:NamedIndividual ;
+                     :maUczestnika :papiezbenedyktVII ;
+                     :dataSmierci 1024 ;
+                     rdfs:label "smierc Benedykta VIII"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercBoleslasaSmialego
+:smiercBoleslasaSmialego rdf:type owl:NamedIndividual ;
+                         :maUczestnika :boleslawSmialy ;
+                         :dataSmierci 1081 ;
+                         rdfs:label "smierc Boleslawa Smialego" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercBoleslawaKrzywoustego
+:smiercBoleslawaKrzywoustego rdf:type owl:NamedIndividual ;
+                             :maUczestnika :boleslawKrzywousty ;
+                             :dataSmierci 1138 ;
+                             rdfs:label "smierc Boleslawa Krzywoustego" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercBoleslawaSynaMieszkaStarego
+:smiercBoleslawaSynaMieszkaStarego rdf:type owl:NamedIndividual ;
+                                   :maUczestnika :boleslawSynMieszkaStarego ;
+                                   :dataSmierci 1195 ;
+                                   rdfs:label "smierc Boleslawa Syna Mieszka Starego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercBrunaZKwerfurtu
+:smiercBrunaZKwerfurtu rdf:type owl:NamedIndividual ;
+                       :maUczestnika :brunoZKwerfurtu ;
+                       rdfs:label "smierc Bruna z Kwerfurtu"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercDobrawy
+:smiercDobrawy rdf:type owl:NamedIndividual ;
+               :maUczestnika :dobrawa ;
+               :dataSmierci 977 ;
+               rdfs:label "smierc Dobrawy"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercGerona
+:smiercGerona rdf:type owl:NamedIndividual ;
+              :maUczestnika :geron ;
+              :dataSmierci 965 ;
+              rdfs:label "smierc Gerona"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercHenrykaBrodatego
+:smiercHenrykaBrodatego rdf:type owl:NamedIndividual ;
+                        :maUczestnika :henrykBrodaty ;
+                        rdfs:label "smierc Henryka Brodatego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercHenrykaII
+:smiercHenrykaII rdf:type owl:NamedIndividual ;
+                 :maUczestnika :henrykII ;
+                 :dataSmierci 1024 ;
+                 rdfs:label "smierc Henryka II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercHenrykaIV
+:smiercHenrykaIV rdf:type owl:NamedIndividual ;
+                 :maUczestnika :henrykIV ;
+                 :dataSmierci 1106 ;
+                 rdfs:label "smierc Henryka IV" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercHenrykaV
+:smiercHenrykaV rdf:type owl:NamedIndividual ;
+                :maUczestnika :henrykV ;
+                :dataSmierci 1125 ;
+                rdfs:label "smierc Henryka V" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercKazimierzaOdnowiciela
+:smiercKazimierzaOdnowiciela rdf:type owl:NamedIndividual ;
+                             :maUczestnika :kazimierzOdnowiciel ;
+                             :dataSmierci 1058 ;
+                             rdfs:label "smierc Kazimierza Odnowiciela"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercKonradaII
+:smiercKonradaII rdf:type owl:NamedIndividual ;
+                 :maUczestnika :konradII ;
+                 :dataSmierci 1039 ;
+                 rdfs:label "smierc Konrada II" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercKonradaIII
+:smiercKonradaIII rdf:type owl:NamedIndividual ;
+                  :maUczestnika :konradIII ;
+                  :dataSmierci 1152 ;
+                  rdfs:label "smierc Konrada III" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercLeszkaBialego
+:smiercLeszkaBialego rdf:type owl:NamedIndividual ;
+                     :maUczestnika :leszekBialy ;
+                     rdfs:label "smierc Leszka Bialego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercMieszka
+:smiercMieszka rdf:type owl:NamedIndividual ;
+               :maUczestnika :mieszkoSynMieszkaI ;
+               rdfs:label "smierc Mieszka"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercMieszkaI
+:smiercMieszkaI rdf:type owl:NamedIndividual ;
+                :maUczestnika :mieszkoI ;
+                rdfs:label "smierc Mieszka I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercMieszkaII
+:smiercMieszkaII rdf:type owl:NamedIndividual ;
+                 :maUczestnika :mieszkoII ;
+                 :dataSmierci 1034 ;
+                 rdfs:label "smierc Mieszka II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercMieszkaStarego
+:smiercMieszkaStarego rdf:type owl:NamedIndividual ;
+                      :maUczestnika :mieszkoStary ;
+                      rdfs:label "smierc Mieszka Starego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercMieszkaSynaKazimierzaOdnowiciela
+:smiercMieszkaSynaKazimierzaOdnowiciela rdf:type owl:NamedIndividual ;
+                                        :maUczestnika :mieszko ;
+                                        :dataSmierci 1065 ;
+                                        rdfs:comment "zmarl w 1065" ;
+                                        rdfs:label "smierc Mieszka syna Kazimierza Odnowiciela" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercMszczujaII
+:smiercMszczujaII rdf:type owl:NamedIndividual ;
+                  :maUczestnika :mszczujII ;
+                  rdfs:label "smierc Mszczuja II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercOttonaI
+:smiercOttonaI rdf:type owl:NamedIndividual ;
+               :maUczestnika :ottonI ;
+               :dataSmierci 973 ;
+               rdfs:label "smierc Ottona I" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercOttonaII
+:smiercOttonaII rdf:type owl:NamedIndividual ;
+                :maUczestnika :ottonII ;
+                :dataSmierci 983 ;
+                rdfs:label "smierc Ottona II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercOttonaIII
+:smiercOttonaIII rdf:type owl:NamedIndividual ;
+                 :maUczestnika :ottonIII ;
+                 :dataSmierci 1002 ;
+                 rdfs:label "smierc Ottona III"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercPapiezaSylwestraII
+:smiercPapiezaSylwestraII rdf:type owl:NamedIndividual ;
+                          :maUczestnika :papiezSylvesterII ;
+                          :dataSmierci 1003 ;
+                          rdfs:label "smierc Sylwestra II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercPrzemyslaII
+:smiercPrzemyslaII rdf:type owl:NamedIndividual ;
+                   :maUczestnika :przemyslII ;
+                   rdfs:label "smierc Przemysla II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercStanislawa
+:smiercStanislawa rdf:type owl:NamedIndividual ;
+                  :maUczestnika :stanislaw ;
+                  rdfs:label "smierc Stanislawa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercSwietopelka
+:smiercSwietopelka rdf:type owl:NamedIndividual ;
+                   :maUczestnika :swietopelksynMieszkaI ;
+                   rdfs:label "smierc Swietopelka" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercSwietopełkaZRusi
+:smiercSwietopełkaZRusi rdf:type owl:NamedIndividual ;
+                        :uczestniczyW :swietopelkSynWladcyRusi ;
+                        :dataSmierci 1019 ;
+                        rdfs:label "smierc Swietopelka z Rusi" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercWladyslawaIIWygnanca
+:smiercWladyslawaIIWygnanca rdf:type owl:NamedIndividual ;
+                            :maUczestnika :wladyslawIIWygnaniec ;
+                            :dataSmierci 1159 ;
+                            rdfs:label "smierc Wladyslawa II Wygnanca" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercWlodzimierzaIWielkiego
+:smiercWlodzimierzaIWielkiego rdf:type owl:NamedIndividual ;
+                              :maUczestnika :wlodzimierzIWielki ;
+                              :dataSmierci 1015 ;
+                              rdfs:label "smierc Wlodzimierza I Wielkiego"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercZbigniewa
+:smiercZbigniewa rdf:type owl:NamedIndividual ;
+                 :maUczestnika :zbigniew ;
+                 rdfs:label "smierc Zbigniewa"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#smiercwladyslawaIHermana
+:smiercwladyslawaIHermana rdf:type owl:NamedIndividual ;
+                          :maUczestnika :wladyslawIHerman ;
+                          :dataSmierci 1102 ;
+                          rdfs:label "smierc Wladyslawa I Hermana"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#spotkanieKsiazatPisatowskichWGasawie
+:spotkanieKsiazatPisatowskichWGasawie rdf:type owl:NamedIndividual ;
+                                      rdfs:comment "Leszek bialy zowstal tu zamordowany w 1227" ;
+                                      rdfs:label "Spotkanie ksiazat piastowskich w Gasawie"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#stanislaw
+:stanislaw rdf:type owl:NamedIndividual ;
+           rdfs:comment "biskup krakowski skazany został przez sąd arcybiskupi „za zdradę” na śmierć przez obcięcie rąk i nóg, zostal swietym" ;
+           rdfs:label "Stanislaw"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#stolicaApostolska
+:stolicaApostolska rdf:type owl:NamedIndividual ;
+                   rdfs:label "Stolica Apostolska"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#swWojciech
+:swWojciech rdf:type owl:NamedIndividual ;
+            :maBrata :radzimGaudenty ;
+            rdfs:comment "św. Wojciech z czeskiego rodu Sławnikowiców" ;
+            rdfs:label "Wojciech"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#swietopelk
+:swietopelk rdf:type owl:NamedIndividual ;
+            rdfs:label "Swientopelk ksiaze czeski" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#swietopelkSynWladcyRusi
+:swietopelkSynWladcyRusi rdf:type owl:NamedIndividual ;
+                         :maBrata :jaroslawMadry ;
+                         :maOjca :wlodzimierzIWielki ;
+                         :maSiostre :przedslawa ;
+                         rdfs:comment "syn Wlodzimierza Wielkiego, slu z nn corka chrobrego, obejmuje tron rusi w 1019r, prawdopodobie straci tron w tym samym roku i zostal zabity w czasie ucieczki" ;
+                         rdfs:label "Swientopelk z rusi" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#swietopelksynMieszkaI
+:swietopelksynMieszkaI rdf:type owl:NamedIndividual ;
+                       :jestBratem :lambert ,
+                                   :mieszkoSynMieszkaI ;
+                       :jestSynem :mieszkoI ,
+                                  :odaDytrykowna ;
+                       :maMatke :odaDytrykowna ;
+                       :maOjca :mieszkoI ;
+                       rdfs:comment "syn mieszka I i ody" ;
+                       rdfs:label "Swietopelk syn Mieszka I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#sygryda
+:sygryda rdf:type owl:NamedIndividual ;
+         :maBrata :boleslawChrobry ;
+         :maMatke :dobrawa ;
+         :maOjca :mieszkoI ;
+         rdfs:comment "występującą także jako Świętosława i Storrada, slub z erykiem zwycieskim okolo 983 roku, corka dobrawy" ;
+         rdfs:label "Sygryda"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#teodoryk
+:teodoryk rdf:type owl:NamedIndividual ;
+          :wlada :marchiaPolnocna ;
+          rdfs:comment "margrabia marchii polnocnej" ;
+          rdfs:label "Teodoryk"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#teofano
+:teofano rdf:type owl:NamedIndividual ;
+         rdfs:label "Teofano"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#waclawII
+:waclawII rdf:type owl:NamedIndividual ;
+          rdfs:label "Waclaw II"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#warcislawowI
+:warcislawowI rdf:type owl:NamedIndividual ;
+              rdfs:comment "ksiaze zachodniopomorski" ;
+              rdfs:label "Warcislaw I"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wichman
+:wichman rdf:type owl:NamedIndividual ;
+         rdfs:comment "że w 964 roku Mieszko poniósł klęskę zadaną przez wielmożę saskiego, a zarazem znanego wówczas awanturnika Wichmana" ;
+         rdfs:label "Wichman"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#widukindZKorbei
+:widukindZKorbei rdf:type owl:NamedIndividual ;
+                 rdfs:comment "Współczesny Mieszkowi kronikarz w swych Dziejach saskich podał, że w 964 roku Mieszko poniósł klęskę zadaną przez wielmożę saskiego" ;
+                 rdfs:label "Widukind z Korbei"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladyslawIHerman
+:wladyslawIHerman rdf:type owl:NamedIndividual ;
+                  :maBrata :boleslawSmialy ,
+                           :mieszko ;
+                  :maOjca :kazimierzOdnowiciel ;
+                  :wladaKsiestwem :księstwopolskie ;
+                  rdfs:comment "obja wladze 1079 roku, 1097 podzial polski na dzielnice, umarl w 1102" ;
+                  rdfs:label "Wladyslaw I Herman"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladyslawIIWygnaniec
+:wladyslawIIWygnaniec rdf:type owl:NamedIndividual ;
+                      :maBrata :boleslawKedzierzawy ,
+                               :henrykSandomierski ,
+                               :kazimierzSprawiedliwy ,
+                               :mieszkoStary ;
+                      :maOjca :boleslawKrzywousty ;
+                      rdfs:comment "zmarl w 1159" ;
+                      rdfs:label "Wladyslaw II Wygnaniec"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladyslawLaskonogi
+:wladyslawLaskonogi rdf:type owl:NamedIndividual ;
+                    :maBrata :boleslawSynMieszkaStarego ;
+                    :maOjca :mieszkoStary ;
+                    rdfs:comment "obja wladze w krakowie 1202" ;
+                    rdfs:label "Wladyslaw Laskonogi"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladyslawLokietek
+:wladyslawLokietek rdf:type owl:NamedIndividual ;
+                   rdfs:label "Wladyslas Lokietek"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wladyslawOdonic
+:wladyslawOdonic rdf:type owl:NamedIndividual ;
+                 rdfs:comment "bratanek Władysława Laskonogiego" ;
+                 rdfs:label "Wladyslaw Odonic"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wlodzimierzIWielki
+:wlodzimierzIWielki rdf:type owl:NamedIndividual ;
+                    rdfs:comment "panowal około 980‒1015, smierc 1015" ;
+                    rdfs:label "Wlodzimierz I Wielki"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wojnaCzeskoNiemiecka
+:wojnaCzeskoNiemiecka rdf:type owl:NamedIndividual ;
+                      rdfs:comment "Otton II i Bolesław II czeski koniec prawdopodobnie 978" ;
+                      rdfs:label "Wojna czesko-niemiecka" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wojnaPolskoNiemiecka
+:wojnaPolskoNiemiecka rdf:type owl:NamedIndividual ;
+                      rdfs:comment "czas trwania 1002 - 1018" ;
+                      rdfs:label "Wojna polsko-niemiecka"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wojnaPolskoRuska
+:wojnaPolskoRuska rdf:type owl:NamedIndividual ;
+                  rdfs:comment "mieszko I, Włodzimierz I w 981 roku najechał i zajął Grody Czerwieńskie" ;
+                  rdfs:label "Wojna polsko-ruska" .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#wroclaw
+:wroclaw rdf:type owl:NamedIndividual ;
+         :zawieraSieWBiskupstwie :biskupstwoWroclaw ;
+         rdfs:label "Wroclaw"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zbigniew
+:zbigniew rdf:type owl:NamedIndividual ;
+          :maBrata :boleslawKrzywousty ;
+          :maOjca :wladyslawIHerman ;
+          rdfs:comment "syn wladyslawa I Hermana, brat boleslawa, w roku 1102 Zbigniew i Bolesław rozpoczęli rządy jako książęta równorzędni, utrata wladzy w 1108" ;
+          rdfs:label "Zbigniew"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zjazdWGnieznie
+:zjazdWGnieznie rdf:type owl:NamedIndividual ;
+                rdfs:comment "do gniezna przybyl Otton III" ;
+                rdfs:label "Zjazd w Gnieznie w 1000 roku"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zjazdWKwedlinburgu
+:zjazdWKwedlinburgu rdf:type owl:NamedIndividual ;
+                    rdfs:comment "uczestnicy mieszko i otton II" ;
+                    rdfs:label "Zjazd w Kwedlinburgu w 973 roku"@pl .
+
+
+###  http://www.semanticweb.org/9/ontologies/2019/0/untitled-ontology-70#zjazdWKwedlinburguW986
+:zjazdWKwedlinburguW986 rdf:type owl:NamedIndividual ;
+                        rdfs:label "Zjazd w Kwedlinburgu w 986 roku" ,
+                                   "potwierdzenie sojuszu polsko-niemiecko-czeskiego" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :bitwa
+                :koronacja
+                :podroz
+                :traktat
+                :wojna
+                :wydarzenia_z_zycia
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :cesarstwo
+                :krolestwo
+                :ksiestwo
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :duchowny
+                :kronikarz
+                :wladca
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :narodziny
+                :slub
+                :smierc
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi

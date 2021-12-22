@@ -1,0 +1,2347 @@
+@prefix : <http://onto.kul.pl/ohp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://onto.kul.pl/ohp> .
+
+<http://onto.kul.pl/ohp> rdf:type owl:Ontology ;
+                          rdfs:label "Ontologia historii Polski"@pl .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://onto.kul.pl/ohp#hasAuntInLaw
+:hasAuntInLaw rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :maSpowinowaconego ;
+              owl:inverseOf :isAuntInLawOf .
+
+
+###  http://onto.kul.pl/ohp#hasBrotherInLaw
+:hasBrotherInLaw rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasSiblingInLaw ;
+                 owl:inverseOf :isBrotherInLawOf ;
+                 owl:propertyChainAxiom ( :maMalzonka
+                                          :maBrata
+                                        ) ,
+                                        ( :maRodzeńtwo
+                                          :maMeza
+                                        ) .
+
+
+###  http://onto.kul.pl/ohp#hasFirstCousinOnceRemoved
+:hasFirstCousinOnceRemoved rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :maKuzyna ;
+                           owl:propertyChainAxiom ( :maKuzynaWPierwszymPokoleniu
+                                                    :maDziecko
+                                                  ) .
+
+
+###  http://onto.kul.pl/ohp#hasGrandParent
+:hasGrandParent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :maPrzodka ;
+                owl:inverseOf :isGrandParentOf ;
+                owl:propertyChainAxiom ( :maRodzica
+                                         :maRodzica
+                                       ) .
+
+
+###  http://onto.kul.pl/ohp#hasGreatAunt
+:hasGreatAunt rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :maKrewnego ;
+              owl:inverseOf :isGreatAuntOf ;
+              rdfs:domain :Osoba ;
+              rdfs:range :Kobieta ;
+              owl:propertyChainAxiom ( :hasGrandParent
+                                       :maSiostre
+                                     ) .
+
+
+###  http://onto.kul.pl/ohp#hasGreatUncle
+:hasGreatUncle rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :maKrewnego ;
+               owl:inverseOf :isGreatUncleOf ;
+               rdfs:domain :Osoba ;
+               rdfs:range :Mezczyzna ;
+               owl:propertyChainAxiom ( :hasGrandParent
+                                        :maBrata
+                                      ) .
+
+
+###  http://onto.kul.pl/ohp#hasSiblingInLaw
+:hasSiblingInLaw rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :maSpowinowaconego ;
+                 owl:inverseOf :isSiblingInLawOf .
+
+
+###  http://onto.kul.pl/ohp#hasSisterInLaw
+:hasSisterInLaw rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasSiblingInLaw ;
+                owl:inverseOf :isSisterInLawOf ;
+                owl:propertyChainAxiom ( :maBrata
+                                         :maZone
+                                       ) ,
+                                       ( :maMalzonka
+                                         :maSiostre
+                                       ) .
+
+
+###  http://onto.kul.pl/ohp#hasUncleInLaw
+:hasUncleInLaw rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :maSpowinowaconego ;
+               owl:inverseOf :isUncleInLawOf .
+
+
+###  http://onto.kul.pl/ohp#isAuntInLawOf
+:isAuntInLawOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:propertyChainAxiom ( :jestZona
+                                        :jestBratem
+                                        :jestRodzicem
+                                      ) .
+
+
+###  http://onto.kul.pl/ohp#isBrotherInLawOf
+:isBrotherInLawOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#isGrandParentOf
+:isGrandParentOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#isGreatAuntOf
+:isGreatAuntOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#isGreatUncleOf
+:isGreatUncleOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#isSiblingInLawOf
+:isSiblingInLawOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#isSisterInLawOf
+:isSisterInLawOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#isUncleInLawOf
+:isUncleInLawOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:propertyChainAxiom ( :jestMezem
+                                         :jestSiostra
+                                         :jestRodzicem
+                                       ) .
+
+
+###  http://onto.kul.pl/ohp#jestBabcią
+:jestBabcią rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :maBabcie .
+
+
+###  http://onto.kul.pl/ohp#jestBratem
+:jestBratem rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :maBrata .
+
+
+###  http://onto.kul.pl/ohp#jestCiocia
+:jestCiocia rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :maCiocie .
+
+
+###  http://onto.kul.pl/ohp#jestCorka
+:jestCorka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :maCorke .
+
+
+###  http://onto.kul.pl/ohp#jestDziadkiem
+:jestDziadkiem rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :maDziadka ;
+               rdfs:domain :Dziadek ;
+               rdfs:range :Osoba .
+
+
+###  http://onto.kul.pl/ohp#jestDzieckiem
+:jestDzieckiem rdf:type owl:ObjectProperty ;
+               owl:equivalentProperty :maRodzica ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :maDziecko .
+
+
+###  http://onto.kul.pl/ohp#jestMalzonkiem
+:jestMalzonkiem rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf :maMalzonka ;
+                rdf:type owl:SymmetricProperty .
+
+
+###  http://onto.kul.pl/ohp#jestMatka
+:jestMatka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :maMatke .
+
+
+###  http://onto.kul.pl/ohp#jestMeskimPartneremW
+:jestMeskimPartneremW rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      owl:inverseOf :maMeskiegoPartnera .
+
+
+###  http://onto.kul.pl/ohp#jestMezem
+:jestMezem rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :maMeza .
+
+
+###  http://onto.kul.pl/ohp#jestOjcem
+:jestOjcem rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :maOjca ;
+           rdfs:domain :Mezczyzna .
+
+
+###  http://onto.kul.pl/ohp#jestPartneremW
+:jestPartneremW rdf:type owl:ObjectProperty ;
+                owl:inverseOf :maPartnera .
+
+
+###  http://onto.kul.pl/ohp#jestPrzodkiem
+:jestPrzodkiem rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :maPrzodka .
+
+
+###  http://onto.kul.pl/ohp#jestRodzicem
+:jestRodzicem rdf:type owl:ObjectProperty ;
+              owl:equivalentProperty :maDziecko ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf :maRodzica .
+
+
+###  http://onto.kul.pl/ohp#jestSiostra
+:jestSiostra rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :maSiostre .
+
+
+###  http://onto.kul.pl/ohp#jestSynem
+:jestSynem rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :maSyna .
+
+
+###  http://onto.kul.pl/ohp#jestTesciem
+:jestTesciem rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :maTescia ;
+             owl:propertyChainAxiom ( :maMalzonka
+                                      :maOjca
+                                    ) .
+
+
+###  http://onto.kul.pl/ohp#jestTesciowa
+:jestTesciowa rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf :maTesciowa .
+
+
+###  http://onto.kul.pl/ohp#jestWujkiem
+:jestWujkiem rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :maWujka .
+
+
+###  http://onto.kul.pl/ohp#jestZenskimPartneremW
+:jestZenskimPartneremW rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       owl:inverseOf :maZenskiegoPartnera .
+
+
+###  http://onto.kul.pl/ohp#jestZona
+:jestZona rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :maZone .
+
+
+###  http://onto.kul.pl/ohp#maBabcie
+:maBabcie rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasGrandParent ;
+          owl:propertyChainAxiom ( :maRodzica
+                                   :maMatke
+                                 ) .
+
+
+###  http://onto.kul.pl/ohp#maBrata
+:maBrata rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :maRodzeńtwo ;
+         rdf:type owl:TransitiveProperty ;
+         rdfs:domain :Osoba ;
+         rdfs:range :Mezczyzna .
+
+
+###  http://onto.kul.pl/ohp#maCiocie
+:maCiocie rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :maKrewnego ;
+          rdfs:domain :Osoba ;
+          rdfs:range :Kobieta ;
+          owl:propertyChainAxiom ( :maRodzica
+                                   :maSiostre
+                                 ) .
+
+
+###  http://onto.kul.pl/ohp#maCorke
+:maCorke rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :maDziecko ;
+         rdfs:domain :Osoba ;
+         rdfs:range :Kobieta .
+
+
+###  http://onto.kul.pl/ohp#maDziadka
+:maDziadka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasGrandParent ;
+           owl:propertyChainAxiom ( :maRodzica
+                                    :maOjca
+                                  ) .
+
+
+###  http://onto.kul.pl/ohp#maDziecko
+:maDziecko rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maKrewnego ;
+           rdfs:domain :Osoba ;
+           rdfs:range :Osoba .
+
+
+###  http://onto.kul.pl/ohp#maKrewnego
+:maKrewnego rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :maRelacjeZ ;
+            rdf:type owl:SymmetricProperty .
+
+
+###  http://onto.kul.pl/ohp#maKuzyna
+:maKuzyna rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :maKrewnego .
+
+
+###  http://onto.kul.pl/ohp#maKuzynaWDrugimPokoleniu
+:maKuzynaWDrugimPokoleniu rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :maKuzyna ;
+                          rdf:type owl:SymmetricProperty ;
+                          owl:propertyChainAxiom ( :hasGrandParent
+                                                   :maRodzeńtwo
+                                                   :isGrandParentOf
+                                                 ) .
+
+
+###  http://onto.kul.pl/ohp#maKuzynaWPierwszymPokoleniu
+:maKuzynaWPierwszymPokoleniu rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :maKuzyna ;
+                             rdf:type owl:SymmetricProperty ;
+                             owl:propertyChainAxiom ( :maRodzica
+                                                      :maRodzeńtwo
+                                                      :maDziecko
+                                                    ) .
+
+
+###  http://onto.kul.pl/ohp#maMalzonka
+:maMalzonka rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :maSpowinowaconego ;
+            rdf:type owl:SymmetricProperty .
+
+
+###  http://onto.kul.pl/ohp#maMatke
+:maMatke rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :maRodzica ;
+         rdfs:domain :Osoba ;
+         rdfs:range :Kobieta ;
+         rdfs:comment "rozumienie relacji maMatke jest biologiczne"@pl .
+
+
+###  http://onto.kul.pl/ohp#maMeskiegoPartnera
+:maMeskiegoPartnera rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :maPartnera ;
+                    rdfs:domain :SlubFHKB ;
+                    rdfs:range :Mezczyzna .
+
+
+###  http://onto.kul.pl/ohp#maMeza
+:maMeza rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :maMalzonka ;
+        owl:propertyChainAxiom ( :jestZenskimPartneremW
+                                 :maMeskiegoPartnera
+                               ) .
+
+
+###  http://onto.kul.pl/ohp#maOjca
+:maOjca rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :maRodzica ;
+        rdfs:domain :Osoba ;
+        rdfs:range :Mezczyzna .
+
+
+###  http://onto.kul.pl/ohp#maPartnera
+:maPartnera rdf:type owl:ObjectProperty ;
+            rdfs:domain :SlubFHKB ;
+            rdfs:range :Osoba .
+
+
+###  http://onto.kul.pl/ohp#maPlec
+:maPlec rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :Osoba ;
+        rdfs:range :Plec .
+
+
+###  http://onto.kul.pl/ohp#maPrzodka
+:maPrzodka rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maKrewnego ;
+           rdf:type owl:TransitiveProperty .
+
+
+###  http://onto.kul.pl/ohp#maRelacjeZ
+:maRelacjeZ rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty .
+
+
+###  http://onto.kul.pl/ohp#maRodzeńtwo
+:maRodzeńtwo rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :maKrewnego ;
+             owl:inverseOf :nalezyDoRodzenstwa ;
+             rdf:type owl:SymmetricProperty ,
+                      owl:TransitiveProperty ;
+             owl:propertyChainAxiom ( :maRodzica
+                                      :jestRodzicem
+                                    ) .
+
+
+###  http://onto.kul.pl/ohp#maRodzica
+:maRodzica rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maPrzodka ;
+           rdfs:domain :Osoba ;
+           rdfs:range :Osoba .
+
+
+###  http://onto.kul.pl/ohp#maSiostre
+:maSiostre rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maRodzeńtwo ;
+           rdf:type owl:TransitiveProperty ;
+           rdfs:domain :Osoba ;
+           rdfs:range :Kobieta .
+
+
+###  http://onto.kul.pl/ohp#maSpowinowaconego
+:maSpowinowaconego rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :maRelacjeZ .
+
+
+###  http://onto.kul.pl/ohp#maSyna
+:maSyna rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :maDziecko ;
+        rdfs:domain :Osoba ;
+        rdfs:range :Mezczyzna .
+
+
+###  http://onto.kul.pl/ohp#maTescia
+:maTescia rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :maTesciow ;
+          rdfs:range :Mezczyzna .
+
+
+###  http://onto.kul.pl/ohp#maTesciow
+:maTesciow rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :maSpowinowaconego ;
+           owl:inverseOf :nalezyDoTesciow ;
+           rdfs:domain :Osoba ;
+           rdfs:range :Osoba .
+
+
+###  http://onto.kul.pl/ohp#maTesciowa
+:maTesciowa rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :maTesciow ;
+            rdfs:range :Kobieta .
+
+
+###  http://onto.kul.pl/ohp#maWujka
+:maWujka rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :maKrewnego ;
+         rdfs:domain :Osoba ;
+         rdfs:range :Mezczyzna ;
+         owl:propertyChainAxiom ( :maRodzica
+                                  :maBrata
+                                ) .
+
+
+###  http://onto.kul.pl/ohp#maZenskiegoPartnera
+:maZenskiegoPartnera rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :maPartnera ;
+                     rdfs:domain :SlubFHKB ;
+                     rdfs:range :Kobieta .
+
+
+###  http://onto.kul.pl/ohp#maZone
+:maZone rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :maMalzonka ;
+        owl:propertyChainAxiom ( :jestMeskimPartneremW
+                                 :maZenskiegoPartnera
+                               ) .
+
+
+###  http://onto.kul.pl/ohp#nalezyDoRodzenstwa
+:nalezyDoRodzenstwa rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#nalezyDoTesciow
+:nalezyDoTesciow rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://onto.kul.pl/ohp#wlada
+:wlada rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://onto.kul.pl/ohp#hasBirthYear
+:hasBirthYear rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasEventYear ;
+              rdf:type owl:FunctionalProperty .
+
+
+###  http://onto.kul.pl/ohp#hasDeathYear
+:hasDeathYear rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasEventYear ;
+              rdfs:range xsd:integer .
+
+
+###  http://onto.kul.pl/ohp#hasEventYear
+:hasEventYear rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:integer .
+
+
+###  http://onto.kul.pl/ohp#hasMarrigeYear
+:hasMarrigeYear rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :hasEventYear ;
+                rdf:type owl:FunctionalProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://onto.kul.pl/ohp#Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :GlownaDziedzinaOHP .
+
+
+###  http://onto.kul.pl/ohp#Arcybiskup
+:Arcybiskup rdf:type owl:Class ;
+            rdfs:subClassOf :Biskup .
+
+
+###  http://onto.kul.pl/ohp#AuntInLaw
+:AuntInLaw rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :isAuntInLawOf ;
+                                                        owl:someValuesFrom :Osoba
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://onto.kul.pl/ohp#Babcia
+:Babcia rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :jestBabcią ;
+                                                     owl:someValuesFrom :Osoba
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://onto.kul.pl/ohp#Biskup
+:Biskup rdf:type owl:Class ;
+        rdfs:subClassOf :Duchowny .
+
+
+###  http://onto.kul.pl/ohp#Bitwa
+:Bitwa rdf:type owl:Class ;
+       rdfs:subClassOf :Zdarzenie .
+
+
+###  http://onto.kul.pl/ohp#Brat
+:Brat rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :jestBratem ;
+                                                   owl:someValuesFrom :Osoba
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://onto.kul.pl/ohp#BrotherInLaw
+:BrotherInLaw rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :isBrotherInLawOf ;
+                                                           owl:someValuesFrom :Osoba
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://onto.kul.pl/ohp#Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Caryca
+:Caryca rdf:type owl:Class ;
+        rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Cesarstwo
+:Cesarstwo rdf:type owl:Class ;
+           rdfs:subClassOf :Panstwo .
+
+
+###  http://onto.kul.pl/ohp#Cesarz
+:Cesarz rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :wlada ;
+                                                     owl:someValuesFrom :Cesarstwo
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Cesarzowa
+:Cesarzowa rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :wlada ;
+                                                        owl:someValuesFrom :Cesarstwo
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Ciocia
+:Ciocia rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :jestCiocia ;
+                                                     owl:someValuesFrom :Osoba
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://onto.kul.pl/ohp#Corka
+:Corka rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :maRodzica ;
+                                                    owl:someValuesFrom :Osoba
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://onto.kul.pl/ohp#Czlowiek
+:Czlowiek rdf:type owl:Class ;
+          owl:equivalentClass :Osoba ;
+          rdfs:subClassOf :Agent .
+
+
+###  http://onto.kul.pl/ohp#Duchowny
+:Duchowny rdf:type owl:Class ;
+          rdfs:subClassOf :Czlowiek .
+
+
+###  http://onto.kul.pl/ohp#Dynastia
+:Dynastia rdf:type owl:Class ;
+          rdfs:subClassOf :Rod .
+
+
+###  http://onto.kul.pl/ohp#Dziadek
+:Dziadek rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :jestDziadkiem ;
+                                                      owl:someValuesFrom :Osoba
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://onto.kul.pl/ohp#Dziadkowie
+:Dziadkowie rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( [ owl:intersectionOf ( :Osoba
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :isGrandParentOf ;
+                                                                                owl:someValuesFrom :Osoba
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                                       [ owl:intersectionOf ( :Osoba
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :jestRodzicem ;
+                                                                                owl:someValuesFrom [ owl:intersectionOf ( :Osoba
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty :jestRodzicem ;
+                                                                                                                            owl:someValuesFrom :Osoba
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ]
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://onto.kul.pl/ohp#Dziecko
+:Dziecko rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :maRodzica ;
+                                                      owl:someValuesFrom :Osoba
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://onto.kul.pl/ohp#FirstCousinOnceRemoved
+:FirstCousinOnceRemoved rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasFirstCousinOnceRemoved ;
+                                                                     owl:someValuesFrom :Osoba
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] .
+
+
+###  http://onto.kul.pl/ohp#Forefather
+:Forefather rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :jestPrzodkiem ;
+                                                         owl:someValuesFrom :Osoba
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://onto.kul.pl/ohp#Foremother
+:Foremother rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :jestPrzodkiem ;
+                                                         owl:someValuesFrom :Osoba
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://onto.kul.pl/ohp#GlownaDziedzinaFHKB
+:GlownaDziedzinaFHKB rdf:type owl:Class .
+
+
+###  http://onto.kul.pl/ohp#GlownaDziedzinaOHP
+:GlownaDziedzinaOHP rdf:type owl:Class .
+
+
+###  http://onto.kul.pl/ohp#GreatAunt
+:GreatAunt rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :isGreatAuntOf ;
+                                                        owl:someValuesFrom :Osoba
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://onto.kul.pl/ohp#GreatUncle
+:GreatUncle rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :isGreatUncleOf ;
+                                                         owl:someValuesFrom :Osoba
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://onto.kul.pl/ohp#Kardynal
+:Kardynal rdf:type owl:Class ;
+          rdfs:subClassOf :Duchowny .
+
+
+###  http://onto.kul.pl/ohp#Kobieta
+:Kobieta rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :maPlec ;
+                                                      owl:someValuesFrom :Zenska
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://onto.kul.pl/ohp#Koronacja
+:Koronacja rdf:type owl:Class ;
+           rdfs:subClassOf :Zdarzenie .
+
+
+###  http://onto.kul.pl/ohp#Krewny
+:Krewny rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :maKrewnego ;
+                                                     owl:someValuesFrom :Osoba
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://onto.kul.pl/ohp#Krol
+:Krol rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :wlada ;
+                                                   owl:someValuesFrom :Krolestwo
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
+      rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Krolestwo
+:Krolestwo rdf:type owl:Class ;
+           rdfs:subClassOf :Panstwo .
+
+
+###  http://onto.kul.pl/ohp#Krolowa
+:Krolowa rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :wlada ;
+                                                      owl:someValuesFrom :Krolestwo
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Kronikarz
+:Kronikarz rdf:type owl:Class ;
+           rdfs:subClassOf :Czlowiek .
+
+
+###  http://onto.kul.pl/ohp#Ksiaze
+:Ksiaze rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :wlada ;
+                                                     owl:someValuesFrom :Ksiestwo
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Ksiestwo
+:Ksiestwo rdf:type owl:Class ;
+          rdfs:subClassOf :Panstwo .
+
+
+###  http://onto.kul.pl/ohp#Ksiezna
+:Ksiezna rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :wlada ;
+                                                      owl:someValuesFrom :Ksiestwo
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#KuzynWDrugimPokoleniu
+:KuzynWDrugimPokoleniu rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :maKuzynaWDrugimPokoleniu ;
+                                                                    owl:someValuesFrom :Osoba
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  http://onto.kul.pl/ohp#KuzynWPierwszymPokoleniu
+:KuzynWPierwszymPokoleniu rdf:type owl:Class ;
+                          owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :maKuzynaWPierwszymPokoleniu ;
+                                                                       owl:someValuesFrom :Osoba
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] .
+
+
+###  http://onto.kul.pl/ohp#Marchia
+:Marchia rdf:type owl:Class ;
+         rdfs:subClassOf :Agent .
+
+
+###  http://onto.kul.pl/ohp#Margrabia
+:Margrabia rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :wlada ;
+                                 owl:someValuesFrom :Marchia
+                               ] ;
+           rdfs:subClassOf :Wladca .
+
+
+###  http://onto.kul.pl/ohp#Meska
+:Meska rdf:type owl:Class ;
+       rdfs:subClassOf :Plec ;
+       owl:disjointWith :Zenska .
+
+
+###  http://onto.kul.pl/ohp#MeskiPotomek
+:MeskiPotomek rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :maPrzodka ;
+                                                           owl:someValuesFrom :Osoba
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://onto.kul.pl/ohp#MeskiPrzodek
+:MeskiPrzodek rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :jestPrzodkiem ;
+                                                           owl:someValuesFrom :Osoba
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://onto.kul.pl/ohp#Mezczyzna
+:Mezczyzna rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :maPlec ;
+                                                        owl:someValuesFrom :Meska
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://onto.kul.pl/ohp#Miasto
+:Miasto rdf:type owl:Class ;
+        rdfs:subClassOf :Miejscowosc .
+
+
+###  http://onto.kul.pl/ohp#Miejsce
+:Miejsce rdf:type owl:Class ;
+         rdfs:subClassOf :GlownaDziedzinaOHP .
+
+
+###  http://onto.kul.pl/ohp#Miejscowosc
+:Miejscowosc rdf:type owl:Class ;
+             rdfs:subClassOf :Miejsce .
+
+
+###  http://onto.kul.pl/ohp#Narodziny
+:Narodziny rdf:type owl:Class ;
+           rdfs:subClassOf :Wydarzenie_z_zycia .
+
+
+###  http://onto.kul.pl/ohp#Osoba
+:Osoba rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :GlownaDziedzinaFHKB
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :maPlec ;
+                                                    owl:someValuesFrom :Plec
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       owl:disjointWith :Plec .
+
+
+###  http://onto.kul.pl/ohp#Panstwo
+:Panstwo rdf:type owl:Class ;
+         rdfs:subClassOf :Agent .
+
+
+###  http://onto.kul.pl/ohp#Papiez
+:Papiez rdf:type owl:Class ;
+        rdfs:subClassOf :Duchowny .
+
+
+###  http://onto.kul.pl/ohp#Pielgrzymka
+:Pielgrzymka rdf:type owl:Class ;
+             rdfs:subClassOf :Podroz .
+
+
+###  http://onto.kul.pl/ohp#Plec
+:Plec rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :GlownaDziedzinaFHKB
+                                                 [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :Meska
+                                                                 :Zenska
+                                                               )
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://onto.kul.pl/ohp#Podroz
+:Podroz rdf:type owl:Class ;
+        rdfs:subClassOf :Zdarzenie .
+
+
+###  http://onto.kul.pl/ohp#Potomek
+:Potomek rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :maPrzodka ;
+                                                      owl:someValuesFrom :Osoba
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://onto.kul.pl/ohp#Prababcia
+:Prababcia rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :jestMatka ;
+                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :isGrandParentOf ;
+                                                                             owl:someValuesFrom :Osoba
+                                                                           ]
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://onto.kul.pl/ohp#Pradziadek
+:Pradziadek rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :jestOjcem ;
+                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :isGrandParentOf ;
+                                                                              owl:someValuesFrom :Osoba
+                                                                            ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://onto.kul.pl/ohp#Pradziadkowie
+:Pradziadkowie rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :jestRodzicem ;
+                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :isGrandParentOf ;
+                                                                                 owl:someValuesFrom :Osoba
+                                                                               ]
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://onto.kul.pl/ohp#Przodek
+:Przodek rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :jestPrzodkiem ;
+                                                      owl:someValuesFrom owl:Thing
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://onto.kul.pl/ohp#Region
+:Region rdf:type owl:Class ;
+        rdfs:subClassOf :Miejsce .
+
+
+###  http://onto.kul.pl/ohp#Relation
+:Relation rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :maRelacjeZ ;
+                                                       owl:someValuesFrom :Osoba
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://onto.kul.pl/ohp#Rod
+:Rod rdf:type owl:Class ;
+     rdfs:subClassOf :GlownaDziedzinaOHP .
+
+
+###  http://onto.kul.pl/ohp#SiblingInLaw
+:SiblingInLaw rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :isSiblingInLawOf ;
+                                                           owl:someValuesFrom :Osoba
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://onto.kul.pl/ohp#Siostra
+:Siostra rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :jestSiostra ;
+                                                      owl:someValuesFrom :Osoba
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://onto.kul.pl/ohp#SisterInLaw
+:SisterInLaw rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :isSisterInLawOf ;
+                                                          owl:someValuesFrom :Osoba
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://onto.kul.pl/ohp#SlubFHKB
+:SlubFHKB rdf:type owl:Class ;
+          owl:equivalentClass :SlubOHP ;
+          rdfs:subClassOf :GlownaDziedzinaFHKB .
+
+
+###  http://onto.kul.pl/ohp#SlubOHP
+:SlubOHP rdf:type owl:Class ;
+         rdfs:subClassOf :Wydarzenie_z_zycia .
+
+
+###  http://onto.kul.pl/ohp#Smierc
+:Smierc rdf:type owl:Class ;
+        rdfs:subClassOf :Wydarzenie_z_zycia .
+
+
+###  http://onto.kul.pl/ohp#Spowinowacony
+:Spowinowacony rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :maSpowinowaconego ;
+                                                            owl:someValuesFrom :Osoba
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://onto.kul.pl/ohp#Stolica
+:Stolica rdf:type owl:Class ;
+         rdfs:subClassOf :Miasto .
+
+
+###  http://onto.kul.pl/ohp#Syn
+:Syn rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Mezczyzna
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :maRodzica ;
+                                                  owl:someValuesFrom :Osoba
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] .
+
+
+###  http://onto.kul.pl/ohp#Tesc
+:Tesc rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :jestTesciem ;
+                                                   owl:someValuesFrom :Osoba
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://onto.kul.pl/ohp#Tesciowa
+:Tesciowa rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :jestTesciowa ;
+                                                       owl:someValuesFrom :Osoba
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://onto.kul.pl/ohp#Tesciowie
+:Tesciowie rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :nalezyDoTesciow ;
+                                                        owl:someValuesFrom :Osoba
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://onto.kul.pl/ohp#Traktat
+:Traktat rdf:type owl:Class ;
+         rdfs:subClassOf :Zdarzenie .
+
+
+###  http://onto.kul.pl/ohp#UncleInLaw
+:UncleInLaw rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :isUncleInLawOf ;
+                                                         owl:someValuesFrom :Osoba
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://onto.kul.pl/ohp#Wies
+:Wies rdf:type owl:Class ;
+      rdfs:subClassOf :Miejscowosc .
+
+
+###  http://onto.kul.pl/ohp#Wladca
+:Wladca rdf:type owl:Class ;
+        rdfs:subClassOf :Czlowiek .
+
+
+###  http://onto.kul.pl/ohp#Wojna
+:Wojna rdf:type owl:Class ;
+       rdfs:subClassOf :Zdarzenie .
+
+
+###  http://onto.kul.pl/ohp#Wujek
+:Wujek rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Osoba
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :jestWujkiem ;
+                                                    owl:someValuesFrom :Osoba
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://onto.kul.pl/ohp#Wydarzenie_z_zycia
+:Wydarzenie_z_zycia rdf:type owl:Class ;
+                    rdfs:subClassOf :Zdarzenie .
+
+
+###  http://onto.kul.pl/ohp#Zdarzenie
+:Zdarzenie rdf:type owl:Class ;
+           rdfs:subClassOf :GlownaDziedzinaOHP .
+
+
+###  http://onto.kul.pl/ohp#Zenska
+:Zenska rdf:type owl:Class ;
+        rdfs:subClassOf :Plec .
+
+
+###  http://onto.kul.pl/ohp#ZenskiPotomek
+:ZenskiPotomek rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :maPrzodka ;
+                                                            owl:someValuesFrom :Osoba
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://onto.kul.pl/ohp#ZenskiPrzodek
+:ZenskiPrzodek rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Kobieta
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :jestPrzodkiem ;
+                                                            owl:someValuesFrom :Osoba
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://onto.kul.pl/ohp#bezprym
+:bezprym rdf:type owl:NamedIndividual ;
+         rdfs:label "Bezprym"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupJakubSwinka
+:biskupJakubSwinka rdf:type owl:NamedIndividual ;
+                   rdfs:label "Jakub Swinka"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupOttonBamberski
+:biskupOttonBamberski rdf:type owl:NamedIndividual ;
+                      rdfs:label "Otton biskup bamberski"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoGniezno
+:biskupstwoGniezno rdf:type owl:NamedIndividual ;
+                   rdfs:label "Gniezno"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoKolobrzeg
+:biskupstwoKolobrzeg rdf:type owl:NamedIndividual ;
+                     rdfs:label "Kolobrzeg"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoKrakow
+:biskupstwoKrakow rdf:type owl:NamedIndividual ;
+                  rdfs:label "Krakow"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoMagdeburg
+:biskupstwoMagdeburg rdf:type owl:NamedIndividual ;
+                     rdfs:label "Magdeburg"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoOlomunieckie
+:biskupstwoOlomunieckie rdf:type owl:NamedIndividual ;
+                        rdfs:label "olomunieckie"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoPlock
+:biskupstwoPlock rdf:type owl:NamedIndividual ;
+                 rdfs:label "Plock"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoPoznan
+:biskupstwoPoznan rdf:type owl:NamedIndividual ;
+                  rdfs:label "Poznan"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoPraskie
+:biskupstwoPraskie rdf:type owl:NamedIndividual ;
+                   rdfs:label "praskie"@pl .
+
+
+###  http://onto.kul.pl/ohp#biskupstwoWroclaw
+:biskupstwoWroclaw rdf:type owl:NamedIndividual ;
+                   rdfs:label "Wroclaw"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaNadMozgawa
+:bitwaNadMozgawa rdf:type owl:NamedIndividual ;
+                 rdfs:label "Bitwa nad rzeka Mozgawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaPodBrzesciem
+:bitwaPodBrzesciem rdf:type owl:NamedIndividual ;
+                   rdfs:label "Bitwa pod Brzesciem"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaPodCedynia
+:bitwaPodCedynia rdf:type owl:NamedIndividual ;
+                 rdfs:label "Bitwa pod Cedynia w 972 roku"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaPodGlogowem
+:bitwaPodGlogowem rdf:type owl:NamedIndividual ;
+                  rdfs:label "Bitwa pod Glogowem"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaPodSuchodolem
+:bitwaPodSuchodolem rdf:type owl:NamedIndividual ;
+                    rdfs:label "Bitwa pod Suchodolem"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaPodWolinem
+:bitwaPodWolinem rdf:type owl:NamedIndividual ;
+                 rdfs:label "Bitwa pod Wolinem w 964 roku"@pl .
+
+
+###  http://onto.kul.pl/ohp#bitwaPodWroclawiem
+:bitwaPodWroclawiem rdf:type owl:NamedIndividual ;
+                    rdfs:label "Bitwa pod Wroclawiem"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawChrobry
+:boleslawChrobry rdf:type owl:NamedIndividual ;
+                 rdfs:label "Boleslaw Chrobry"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawIICzeski
+:boleslawIICzeski rdf:type owl:NamedIndividual ;
+                  rdfs:label "Boleslaw II czeski"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawIIIRudy
+:boleslawIIIRudy rdf:type owl:NamedIndividual ;
+                 rdfs:label "Bolesław III Rudy"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawKedzierzawy
+:boleslawKedzierzawy rdf:type owl:NamedIndividual ;
+                     rdfs:label "Boleslaw Kedzierzawy"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawKrzywousty
+:boleslawKrzywousty rdf:type owl:NamedIndividual ;
+                    rdfs:label "Boleslaw Krzywousty"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawPobozny
+:boleslawPobozny rdf:type owl:NamedIndividual ;
+                 rdfs:label "Boleslaw Pobozny"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawSmialy
+:boleslawSmialy rdf:type owl:NamedIndividual ;
+                rdfs:label "Boleslaw Smialy"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawSynMieszkaStarego
+:boleslawSynMieszkaStarego rdf:type owl:NamedIndividual ;
+                           rdfs:label "Boleslaw syn Mieszka Starego"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawWstydliwy
+:boleslawWstydliwy rdf:type owl:NamedIndividual ;
+                   rdfs:label "Boleslaw Wstydliwy"@pl .
+
+
+###  http://onto.kul.pl/ohp#boleslawWysoki
+:boleslawWysoki rdf:type owl:NamedIndividual ;
+                rdfs:label "Boleslaw Wysoki"@pl .
+
+
+###  http://onto.kul.pl/ohp#brunoZKwerfurtu
+:brunoZKwerfurtu rdf:type owl:NamedIndividual ;
+                 rdfs:label "Bruno z Kwerfurtu"@pl .
+
+
+###  http://onto.kul.pl/ohp#brzetyslaw
+:brzetyslaw rdf:type owl:NamedIndividual ;
+            rdfs:label "Brzetyslaw"@pl .
+
+
+###  http://onto.kul.pl/ohp#budziszyn
+:budziszyn rdf:type owl:NamedIndividual ;
+           rdfs:label "Budziszyn"@pl .
+
+
+###  http://onto.kul.pl/ohp#chrzestPolski
+:chrzestPolski rdf:type owl:NamedIndividual ;
+               rdfs:label "Chrzest Polski"@pl .
+
+
+###  http://onto.kul.pl/ohp#corkaChrobregoWydanaZaSwietopelkaZRusi
+:corkaChrobregoWydanaZaSwietopelkaZRusi rdf:type owl:NamedIndividual ;
+                                        rdfs:label "Corka Chrobrego wydana za Świętopełka z rusi"@pl .
+
+
+###  http://onto.kul.pl/ohp#cyryl
+:cyryl rdf:type owl:NamedIndividual ;
+       rdfs:label "Cyryl"@pl .
+
+
+###  http://onto.kul.pl/ohp#czcibor
+:czcibor rdf:type owl:NamedIndividual ;
+         rdfs:label "Czcibor"@pl .
+
+
+###  http://onto.kul.pl/ohp#dobrawa
+:dobrawa rdf:type owl:NamedIndividual ;
+         :maSyna :boleslawChrobry ;
+         rdfs:label "Dobrawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#dobromir
+:dobromir rdf:type owl:NamedIndividual ;
+          rdfs:label "Dobromir"@pl .
+
+
+###  http://onto.kul.pl/ohp#ekkehard
+:ekkehard rdf:type owl:NamedIndividual ;
+          rdfs:label "Ekkehard"@pl .
+
+
+###  http://onto.kul.pl/ohp#emilda
+:emilda rdf:type owl:NamedIndividual ;
+        rdfs:label "Emilda"@pl .
+
+
+###  http://onto.kul.pl/ohp#erykZwycieski
+:erykZwycieski rdf:type owl:NamedIndividual ;
+               rdfs:label "Eryk Zwycieski"@pl .
+
+
+###  http://onto.kul.pl/ohp#fryderykIBarbarossa
+:fryderykIBarbarossa rdf:type owl:NamedIndividual ;
+                     rdfs:label "Fryderyk I Barbarossa"@pl .
+
+
+###  http://onto.kul.pl/ohp#geron
+:geron rdf:type owl:NamedIndividual ;
+       rdfs:label "Geron"@pl .
+
+
+###  http://onto.kul.pl/ohp#grodSandomierz
+:grodSandomierz rdf:type owl:NamedIndividual ;
+                rdfs:label "Sandomierz"@pl .
+
+
+###  http://onto.kul.pl/ohp#grodSantok
+:grodSantok rdf:type owl:NamedIndividual ;
+            rdfs:label "grod w Santoku"@pl .
+
+
+###  http://onto.kul.pl/ohp#grzymislawa
+:grzymislawa rdf:type owl:NamedIndividual ;
+             rdfs:label "Grzymislawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#guncelin
+:guncelin rdf:type owl:NamedIndividual ;
+          rdfs:label "Guncelin"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykBrodaty
+:henrykBrodaty rdf:type owl:NamedIndividual ;
+               rdfs:label "Henryk Brodaty"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykGlogowski
+:henrykGlogowski rdf:type owl:NamedIndividual ;
+                 rdfs:label "Henryk glogowski"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykII
+:henrykII rdf:type owl:NamedIndividual ;
+          rdfs:label "Henryk II"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykIV
+:henrykIV rdf:type owl:NamedIndividual ;
+          rdfs:label "Henryk IV"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykKlotnikBawarski
+:henrykKlotnikBawarski rdf:type owl:NamedIndividual ;
+                       rdfs:label "Henryk Klotnik bawarski"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykPobozny
+:henrykPobozny rdf:type owl:NamedIndividual ;
+               rdfs:label "Henryk Pobozny"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykPrawy
+:henrykPrawy rdf:type owl:NamedIndividual ;
+             rdfs:label "Henryk Prawy"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykSandomierski
+:henrykSandomierski rdf:type owl:NamedIndividual ;
+                    rdfs:label "Henryk Sandomierski"@pl .
+
+
+###  http://onto.kul.pl/ohp#henrykV
+:henrykV rdf:type owl:NamedIndividual ;
+         rdfs:label "Henryk V"@pl .
+
+
+###  http://onto.kul.pl/ohp#hermanZMisni
+:hermanZMisni rdf:type owl:NamedIndividual ;
+              rdfs:label "Herman z Misni"@pl .
+
+
+###  http://onto.kul.pl/ohp#hodon
+:hodon rdf:type owl:NamedIndividual ;
+       rdfs:label "Hodon"@pl .
+
+
+###  http://onto.kul.pl/ohp#hugoKapet
+:hugoKapet rdf:type owl:NamedIndividual ;
+           rdfs:label "Hugo Kapet"@pl .
+
+
+###  http://onto.kul.pl/ohp#ibrahimIbnJakub
+:ibrahimIbnJakub rdf:type owl:NamedIndividual ;
+                 rdfs:label "Ibrahim ibn Jakub"@pl .
+
+
+###  http://onto.kul.pl/ohp#jaromir
+:jaromir rdf:type owl:NamedIndividual ;
+         rdfs:label "Jaromir"@pl .
+
+
+###  http://onto.kul.pl/ohp#jaroslawMadry
+:jaroslawMadry rdf:type owl:NamedIndividual ;
+               rdfs:label "Jaroslaw Madry"@pl .
+
+
+###  http://onto.kul.pl/ohp#jaroslawSynBoleslawaWysokiego
+:jaroslawSynBoleslawaWysokiego rdf:type owl:NamedIndividual ;
+                               rdfs:label "Jaroslaw syn Boleslawa Wysokiego"@pl .
+
+
+###  http://onto.kul.pl/ohp#jordan
+:jordan rdf:type owl:NamedIndividual ;
+        rdfs:label "Jordan"@pl .
+
+
+###  http://onto.kul.pl/ohp#kazimierzOdnowiciel
+:kazimierzOdnowiciel rdf:type owl:NamedIndividual ;
+                     rdfs:label "Kazimierz Odnowiciel"@pl .
+
+
+###  http://onto.kul.pl/ohp#kazimierzSprawiedliwy
+:kazimierzSprawiedliwy rdf:type owl:NamedIndividual ;
+                       rdfs:label "Kazimierz Sprawiedliwy"@pl .
+
+
+###  http://onto.kul.pl/ohp#kazimierzWielki
+:kazimierzWielki rdf:type owl:NamedIndividual ;
+                 rdfs:label "Kazimierz Wielki"@pl .
+
+
+###  http://onto.kul.pl/ohp#konradII
+:konradII rdf:type owl:NamedIndividual ;
+          rdfs:label "Konrad II"@pl .
+
+
+###  http://onto.kul.pl/ohp#konradIII
+:konradIII rdf:type owl:NamedIndividual ;
+           rdfs:label "Konrad III"@pl .
+
+
+###  http://onto.kul.pl/ohp#konradMazowiecki
+:konradMazowiecki rdf:type owl:NamedIndividual ;
+                  rdfs:label "Konrad Mazowiecki"@pl .
+
+
+###  http://onto.kul.pl/ohp#koronacjaBoleslawaCrobregoNaKrolaPolski
+:koronacjaBoleslawaCrobregoNaKrolaPolski rdf:type owl:NamedIndividual ;
+                                         rdfs:label "Koronacja Bleslawa Chrobrego na Krola Polski"@pl .
+
+
+###  http://onto.kul.pl/ohp#koronacjaBoleslawaSmialegoNaKrolaPolski
+:koronacjaBoleslawaSmialegoNaKrolaPolski rdf:type owl:NamedIndividual ;
+                                         rdfs:label "Koronacja Boleslawa Smialego na Krola Polski"@pl .
+
+
+###  http://onto.kul.pl/ohp#koronacjaHenrykaVNaCesarzaNiemiec
+:koronacjaHenrykaVNaCesarzaNiemiec rdf:type owl:NamedIndividual ;
+                                   rdfs:label "Koronacja Henryka V na Cesarza Niemiec"@pl .
+
+
+###  http://onto.kul.pl/ohp#koronacjaHenrykaVNaKrolaNiemiec
+:koronacjaHenrykaVNaKrolaNiemiec rdf:type owl:NamedIndividual ;
+                                 rdfs:label "Koronacja Henryka V na Krola Niemiec"@pl .
+
+
+###  http://onto.kul.pl/ohp#koronacjaOttonaINaCesarzaRzymskiego
+:koronacjaOttonaINaCesarzaRzymskiego rdf:type owl:NamedIndividual ;
+                                     rdfs:label "Koronacja Ottona I na Cesarza Rzymskiego"@pl .
+
+
+###  http://onto.kul.pl/ohp#koronacjaPrzemyslaIINaKrolaPolski
+:koronacjaPrzemyslaIINaKrolaPolski rdf:type owl:NamedIndividual ;
+                                   rdfs:label "koronacja Przemysla II na Krola Polski"@pl .
+
+
+###  http://onto.kul.pl/ohp#ksieznaHelena
+:ksieznaHelena rdf:type owl:NamedIndividual ;
+               rdfs:label "Ksiezna Helena matka Leszka Bialego"@pl .
+
+
+###  http://onto.kul.pl/ohp#lambert
+:lambert rdf:type owl:NamedIndividual ;
+         rdfs:label "Lambert"@pl .
+
+
+###  http://onto.kul.pl/ohp#leszekBialy
+:leszekBialy rdf:type owl:NamedIndividual ;
+             rdfs:label "Leszek Bialy"@pl .
+
+
+###  http://onto.kul.pl/ohp#leszekCzarny
+:leszekCzarny rdf:type owl:NamedIndividual ;
+              rdfs:label "Leszek Czarny"@pl .
+
+
+###  http://onto.kul.pl/ohp#lotarIII
+:lotarIII rdf:type owl:NamedIndividual ;
+          rdfs:label "Lotar III"@pl .
+
+
+###  http://onto.kul.pl/ohp#marchiaBrandenburska
+:marchiaBrandenburska rdf:type owl:NamedIndividual ;
+                      rdfs:label "Marchia Brandenburska"@pl .
+
+
+###  http://onto.kul.pl/ohp#marchiaMisnienska
+:marchiaMisnienska rdf:type owl:NamedIndividual ;
+                   rdfs:label "Misnienska"@pl .
+
+
+###  http://onto.kul.pl/ohp#marchiaPolnocna
+:marchiaPolnocna rdf:type owl:NamedIndividual ;
+                 rdfs:label "Marchia Polnocna"@pl .
+
+
+###  http://onto.kul.pl/ohp#maslaw
+:maslaw rdf:type owl:NamedIndividual ;
+        rdfs:label "Maslaw"@pl .
+
+
+###  http://onto.kul.pl/ohp#metody
+:metody rdf:type owl:NamedIndividual ;
+        rdfs:label "Metody"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoGasawa
+:miastoGasawa rdf:type owl:NamedIndividual ;
+              rdfs:label "Gasawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoGdansk
+:miastoGdansk rdf:type owl:NamedIndividual ;
+              rdfs:label "Gdansk"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoGniezno
+:miastoGniezno rdf:type owl:NamedIndividual ;
+               rdfs:label "Gniezno"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoKamien
+:miastoKamien rdf:type owl:NamedIndividual ;
+              rdfs:label "Kamien"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoKijow
+:miastoKijow rdf:type owl:NamedIndividual ;
+             rdfs:label "Kijow"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoKolobrzeg
+:miastoKolobrzeg rdf:type owl:NamedIndividual ;
+                 rdfs:label "Kolobrzeg"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoKonstantynopol
+:miastoKonstantynopol rdf:type owl:NamedIndividual ;
+                      rdfs:label "Konstantynopol"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoKrakow
+:miastoKrakow rdf:type owl:NamedIndividual ;
+              rdfs:label "Krakow"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoPlock
+:miastoPlock rdf:type owl:NamedIndividual ;
+             rdfs:label "Plock"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoPoznan
+:miastoPoznan rdf:type owl:NamedIndividual ;
+              rdfs:label "Poznan"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoPraga
+:miastoPraga rdf:type owl:NamedIndividual ;
+             rdfs:label "Praga"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoPrzemysl
+:miastoPrzemysl rdf:type owl:NamedIndividual ;
+                rdfs:label "Przemysl"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoRzym
+:miastoRzym rdf:type owl:NamedIndividual ;
+            rdfs:label "Rzym"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoSzczecin
+:miastoSzczecin rdf:type owl:NamedIndividual ;
+                rdfs:label "Szczecin"@pl .
+
+
+###  http://onto.kul.pl/ohp#miastoWolin
+:miastoWolin rdf:type owl:NamedIndividual ;
+             rdfs:label "Wolin"@pl .
+
+
+###  http://onto.kul.pl/ohp#mieszko
+:mieszko rdf:type owl:NamedIndividual ;
+         rdfs:label "Mieszko"@pl .
+
+
+###  http://onto.kul.pl/ohp#mieszkoI
+:mieszkoI rdf:type owl:NamedIndividual ;
+          :jestSynem :siemomyslPiast ;
+          :maBrata :czcibor ;
+          :maCorke :sygryda ;
+          :maSyna :boleslawChrobry ,
+                  :lambert ,
+                  :mieszko ,
+                  :swietopelksynMieszkaI ;
+          rdfs:label "Mieszko I"@pl .
+
+
+###  http://onto.kul.pl/ohp#mieszkoII
+:mieszkoII rdf:type owl:NamedIndividual ;
+           rdfs:label "Mieszko II"@pl .
+
+
+###  http://onto.kul.pl/ohp#mieszkoPlatonogi
+:mieszkoPlatonogi rdf:type owl:NamedIndividual ;
+                  rdfs:label "Mieszko Platonogi"@pl .
+
+
+###  http://onto.kul.pl/ohp#mieszkoStary
+:mieszkoStary rdf:type owl:NamedIndividual ;
+              rdfs:label "Mieszko Stary"@pl .
+
+
+###  http://onto.kul.pl/ohp#mieszkoSynMieszkaI
+:mieszkoSynMieszkaI rdf:type owl:NamedIndividual ;
+                    rdfs:label "Mieszko syn Mieszka I"@pl .
+
+
+###  http://onto.kul.pl/ohp#mszczujII
+:mszczujII rdf:type owl:NamedIndividual ;
+           rdfs:label "Mszczuj II"@pl .
+
+
+###  http://onto.kul.pl/ohp#oda
+:oda rdf:type owl:NamedIndividual ;
+     rdfs:label "Oda"@pl .
+
+
+###  http://onto.kul.pl/ohp#odaDytrykowna
+:odaDytrykowna rdf:type owl:NamedIndividual ;
+               :jestCorka :teodoryk ;
+               :maSyna :lambert ,
+                       :mieszkoSynMieszkaI ,
+                       :swietopelksynMieszkaI ;
+               rdfs:label "Oda Dytrykowna"@pl .
+
+
+###  http://onto.kul.pl/ohp#odylen
+:odylen rdf:type owl:NamedIndividual ;
+        rdfs:label "Odylen"@pl .
+
+
+###  http://onto.kul.pl/ohp#otton
+:otton rdf:type owl:NamedIndividual ;
+       rdfs:label "Otton"@pl .
+
+
+###  http://onto.kul.pl/ohp#ottonI
+:ottonI rdf:type owl:NamedIndividual ;
+        rdfs:label "Otton I"@pl .
+
+
+###  http://onto.kul.pl/ohp#ottonII
+:ottonII rdf:type owl:NamedIndividual ;
+         rdfs:label "Otton II"@pl .
+
+
+###  http://onto.kul.pl/ohp#ottonIII
+:ottonIII rdf:type owl:NamedIndividual ;
+          rdfs:label "Otton III"@pl .
+
+
+###  http://onto.kul.pl/ohp#papiezGrzegorzVII
+:papiezGrzegorzVII rdf:type owl:NamedIndividual ;
+                   rdfs:label "Grzegorz VII"@pl .
+
+
+###  http://onto.kul.pl/ohp#papiezJanXII
+:papiezJanXII rdf:type owl:NamedIndividual ;
+              rdfs:label "Jan XII"@pl .
+
+
+###  http://onto.kul.pl/ohp#papiezSylvesterII
+:papiezSylvesterII rdf:type owl:NamedIndividual ;
+                   rdfs:label "Sylwester II"@pl .
+
+
+###  http://onto.kul.pl/ohp#papiezbenedyktVII
+:papiezbenedyktVII rdf:type owl:NamedIndividual ;
+                   rdfs:label "Benedykt VIII"@pl .
+
+
+###  http://onto.kul.pl/ohp#piotrWlostowic
+:piotrWlostowic rdf:type owl:NamedIndividual ;
+                rdfs:label "Piotr Wlostowic"@pl .
+
+
+###  http://onto.kul.pl/ohp#pokojWBudziszynie
+:pokojWBudziszynie rdf:type owl:NamedIndividual ;
+                   rdfs:label "Pokoj w Budziszynie"@pl .
+
+
+###  http://onto.kul.pl/ohp#pokojWPoznaniu
+:pokojWPoznaniu rdf:type owl:NamedIndividual ;
+                rdfs:label "Pokoj w Poznaniu 1005"@pl .
+
+
+###  http://onto.kul.pl/ohp#przedslawa
+:przedslawa rdf:type owl:NamedIndividual ;
+            rdfs:label "Przedslawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#przemyslI
+:przemyslI rdf:type owl:NamedIndividual ;
+           rdfs:label "Przemysl I"@pl .
+
+
+###  http://onto.kul.pl/ohp#przemyslII
+:przemyslII rdf:type owl:NamedIndividual ;
+            rdfs:label "Przemysl II"@pl .
+
+
+###  http://onto.kul.pl/ohp#przybywoj
+:przybywoj rdf:type owl:NamedIndividual ;
+           rdfs:label "Przybywoj"@pl .
+
+
+###  http://onto.kul.pl/ohp#radzimGaudenty
+:radzimGaudenty rdf:type owl:NamedIndividual ;
+                rdfs:label "Radzim-Gaudenty"@pl .
+
+
+###  http://onto.kul.pl/ohp#regelinda
+:regelinda rdf:type owl:NamedIndividual ;
+           rdfs:label "Regelinda"@pl .
+
+
+###  http://onto.kul.pl/ohp#rodHaldensleben
+:rodHaldensleben rdf:type owl:NamedIndividual ;
+                 rdfs:label "Haldensleben"@pl .
+
+
+###  http://onto.kul.pl/ohp#rodKapetyngow
+:rodKapetyngow rdf:type owl:NamedIndividual ;
+               rdfs:label "Kapetyngow"@pl .
+
+
+###  http://onto.kul.pl/ohp#rodLudolfingow
+:rodLudolfingow rdf:type owl:NamedIndividual ;
+                rdfs:label "Ludolfingow"@pl .
+
+
+###  http://onto.kul.pl/ohp#rodPiastow
+:rodPiastow rdf:type owl:NamedIndividual ;
+            rdfs:label "Pisatow"@pl .
+
+
+###  http://onto.kul.pl/ohp#rodPrzemyslidow
+:rodPrzemyslidow rdf:type owl:NamedIndividual ;
+                 rdfs:label "Przemyslidow"@pl .
+
+
+###  http://onto.kul.pl/ohp#rodSlawnikowicow
+:rodSlawnikowicow rdf:type owl:NamedIndividual ;
+                  rdfs:label "Slawnikowicow"@pl .
+
+
+###  http://onto.kul.pl/ohp#rozbicieDzielnicowe
+:rozbicieDzielnicowe rdf:type owl:NamedIndividual ;
+                     rdfs:label "Rozbicie Dzielnicowe"@pl .
+
+
+###  http://onto.kul.pl/ohp#rycheza
+:rycheza rdf:type owl:NamedIndividual ;
+         rdfs:label "Rycheza"@pl .
+
+
+###  http://onto.kul.pl/ohp#ryszardIBezTrwogi
+:ryszardIBezTrwogi rdf:type owl:NamedIndividual ;
+                   rdfs:label "Ryszard I bez Trwogi"@pl .
+
+
+###  http://onto.kul.pl/ohp#sieciech
+:sieciech rdf:type owl:NamedIndividual ;
+          rdfs:label "wojewoda Sieciech"@pl .
+
+
+###  http://onto.kul.pl/ohp#siemomyslPiast
+:siemomyslPiast rdf:type owl:NamedIndividual ;
+                rdfs:label "Siemomysl Piast"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubBoleslawaChrobregoZEmilda
+:slubBoleslawaChrobregoZEmilda rdf:type owl:NamedIndividual ;
+                               rdfs:label "slub Boleslawa Chrobrego z Emilda"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubBoleslawaChrobregoZOda
+:slubBoleslawaChrobregoZOda rdf:type owl:NamedIndividual ;
+                            rdfs:label "slub Boleslawa Chrobrego z Oda"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubErykaZwycieskiegoZSygryda
+:slubErykaZwycieskiegoZSygryda rdf:type owl:NamedIndividual ;
+                               rdfs:label "slub Eryk Zwycięskiego z Sygryda"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubMieszkaIIZRycheza
+:slubMieszkaIIZRycheza rdf:type owl:NamedIndividual ;
+                       rdfs:label "slub Mieszka II z Rycheza"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubMieszkaIZDobrawa
+:slubMieszkaIZDobrawa rdf:type owl:NamedIndividual ;
+                      :maMeskiegoPartnera :mieszkoI ;
+                      :maZenskiegoPartnera :dobrawa ;
+                      :hasMarrigeYear 965 ;
+                      rdfs:label "slub Mieszka I z Dobrawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubMieszkaIZOda
+:slubMieszkaIZOda rdf:type owl:NamedIndividual ;
+                  :maMeskiegoPartnera :mieszkoI ;
+                  :maZenskiegoPartnera :odaDytrykowna ;
+                  :hasMarrigeYear 980 ;
+                  rdfs:label "slub Mieszka I z Oda"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubNNZSwietopelkiem
+:slubNNZSwietopelkiem rdf:type owl:NamedIndividual ;
+                      rdfs:label "slub NN z Swietopelkiem"@pl .
+
+
+###  http://onto.kul.pl/ohp#slubRegelindyZHermanem
+:slubRegelindyZHermanem rdf:type owl:NamedIndividual ;
+                        rdfs:label "slub Regelind z Hermanem"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercBenedyktaVIII
+:smiercBenedyktaVIII rdf:type owl:NamedIndividual ;
+                     rdfs:label "smierc Benedykta VIII"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercBoleslawaSynaMieszkaStarego
+:smiercBoleslawaSynaMieszkaStarego rdf:type owl:NamedIndividual ;
+                                   rdfs:label "smierc Boleslawa Syna Mieszka Starego"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercBrunaZKwerfurtu
+:smiercBrunaZKwerfurtu rdf:type owl:NamedIndividual ;
+                       rdfs:label "smierc Bruna z Kwerfurtu"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercDobrawy
+:smiercDobrawy rdf:type owl:NamedIndividual ;
+               rdfs:label "smierc Dobrawy"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercGerona
+:smiercGerona rdf:type owl:NamedIndividual ;
+              rdfs:label "smierc Gerona"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercHenrykaBrodatego
+:smiercHenrykaBrodatego rdf:type owl:NamedIndividual ;
+                        rdfs:label "smierc Henryka Brodatego"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercHenrykaII
+:smiercHenrykaII rdf:type owl:NamedIndividual ;
+                 rdfs:label "smierc Henryka II"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercKazimierzaOdnowiciela
+:smiercKazimierzaOdnowiciela rdf:type owl:NamedIndividual ;
+                             rdfs:label "smierc Kazimierza Odnowiciela"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercLeszkaBialego
+:smiercLeszkaBialego rdf:type owl:NamedIndividual ;
+                     rdfs:label "smierc Leszka Bialego"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercMieszka
+:smiercMieszka rdf:type owl:NamedIndividual ;
+               rdfs:label "smierc Mieszka"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercMieszkaI
+:smiercMieszkaI rdf:type owl:NamedIndividual ;
+                rdfs:label "smierc Mieszka I"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercMieszkaII
+:smiercMieszkaII rdf:type owl:NamedIndividual ;
+                 rdfs:label "smierc Mieszka II"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercMieszkaStarego
+:smiercMieszkaStarego rdf:type owl:NamedIndividual ;
+                      rdfs:label "smierc Mieszka Starego"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercMszczujaII
+:smiercMszczujaII rdf:type owl:NamedIndividual ;
+                  rdfs:label "smierc Mszczuja II"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercOttonaII
+:smiercOttonaII rdf:type owl:NamedIndividual ;
+                rdfs:label "smierc Ottona II"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercOttonaIII
+:smiercOttonaIII rdf:type owl:NamedIndividual ;
+                 rdfs:label "smierc Ottona III"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercPapiezaSylwestraII
+:smiercPapiezaSylwestraII rdf:type owl:NamedIndividual ;
+                          rdfs:label "smierc Sylwestra II"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercPrzemyslaII
+:smiercPrzemyslaII rdf:type owl:NamedIndividual ;
+                   rdfs:label "smierc Przemysla II"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercStanislawa
+:smiercStanislawa rdf:type owl:NamedIndividual ;
+                  rdfs:label "smierc Stanislawa"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercSwietopelka
+:smiercSwietopelka rdf:type owl:NamedIndividual ;
+                   rdfs:label "smierc Swietopelka" .
+
+
+###  http://onto.kul.pl/ohp#smiercWlodzimierzaIWielkiego
+:smiercWlodzimierzaIWielkiego rdf:type owl:NamedIndividual ;
+                              rdfs:label "smierc Wlodzimierza I Wielkiego"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercZbigniewa
+:smiercZbigniewa rdf:type owl:NamedIndividual ;
+                 rdfs:label "smierc Zbigniewa"@pl .
+
+
+###  http://onto.kul.pl/ohp#smiercwladyslawaIHermana
+:smiercwladyslawaIHermana rdf:type owl:NamedIndividual ;
+                          rdfs:label "smierc Wladyslawa I Hermana"@pl .
+
+
+###  http://onto.kul.pl/ohp#spotkanieKsiazatPisatowskichWGasawie
+:spotkanieKsiazatPisatowskichWGasawie rdf:type owl:NamedIndividual ;
+                                      rdfs:label "Spotkanie ksiazat piastowskich w Gasawie"@pl .
+
+
+###  http://onto.kul.pl/ohp#stanislaw
+:stanislaw rdf:type owl:NamedIndividual ;
+           rdfs:label "Stanislaw"@pl .
+
+
+###  http://onto.kul.pl/ohp#swWojciech
+:swWojciech rdf:type owl:NamedIndividual ;
+            rdfs:label "Wojciech"@pl .
+
+
+###  http://onto.kul.pl/ohp#swenWidlobrody
+:swenWidlobrody rdf:type owl:NamedIndividual ;
+                rdfs:label "Swen Widlobrody"@pl .
+
+
+###  http://onto.kul.pl/ohp#swietopelk
+:swietopelk rdf:type owl:NamedIndividual ;
+            rdfs:label "Swietopelk"@pl .
+
+
+###  http://onto.kul.pl/ohp#swietopelkSynWladcyRusi
+:swietopelkSynWladcyRusi rdf:type owl:NamedIndividual ;
+                         rdfs:label "Swietopelk"@pl .
+
+
+###  http://onto.kul.pl/ohp#swietopelksynMieszkaI
+:swietopelksynMieszkaI rdf:type owl:NamedIndividual ;
+                       rdfs:label "Swietopelk syn Mieszka I"@pl .
+
+
+###  http://onto.kul.pl/ohp#sygryda
+:sygryda rdf:type owl:NamedIndividual ;
+         rdfs:label "Sygryda"@pl .
+
+
+###  http://onto.kul.pl/ohp#teodoryk
+:teodoryk rdf:type owl:NamedIndividual ;
+          rdfs:label "Teodoryk"@pl .
+
+
+###  http://onto.kul.pl/ohp#teofano
+:teofano rdf:type owl:NamedIndividual ;
+         rdfs:label "Teofano"@pl .
+
+
+###  http://onto.kul.pl/ohp#waclawII
+:waclawII rdf:type owl:NamedIndividual ;
+          rdfs:label "Waclaw II"@pl .
+
+
+###  http://onto.kul.pl/ohp#warcislawowI
+:warcislawowI rdf:type owl:NamedIndividual ;
+              rdfs:label "Warcislawow I"@pl .
+
+
+###  http://onto.kul.pl/ohp#wichman
+:wichman rdf:type owl:NamedIndividual ;
+         rdfs:label "Wichman"@pl .
+
+
+###  http://onto.kul.pl/ohp#widukindZKorbei
+:widukindZKorbei rdf:type owl:NamedIndividual ;
+                 rdfs:label "Widukind z Korbei"@pl .
+
+
+###  http://onto.kul.pl/ohp#wladyslawIHerman
+:wladyslawIHerman rdf:type owl:NamedIndividual ;
+                  rdfs:label "Wladyslaw I Herman"@pl .
+
+
+###  http://onto.kul.pl/ohp#wladyslawIIWygnaniec
+:wladyslawIIWygnaniec rdf:type owl:NamedIndividual ;
+                      rdfs:label "Wladyslaw II"@pl .
+
+
+###  http://onto.kul.pl/ohp#wladyslawLaskonogi
+:wladyslawLaskonogi rdf:type owl:NamedIndividual ;
+                    rdfs:label "Wladyslaw Laskonogi"@pl .
+
+
+###  http://onto.kul.pl/ohp#wladyslawLokietek
+:wladyslawLokietek rdf:type owl:NamedIndividual ;
+                   rdfs:label "Wladyslas Lokietek"@pl .
+
+
+###  http://onto.kul.pl/ohp#wladyslawOdonic
+:wladyslawOdonic rdf:type owl:NamedIndividual ;
+                 rdfs:label "Wladyslaw Odonic"@pl .
+
+
+###  http://onto.kul.pl/ohp#wlodzimierzIWielki
+:wlodzimierzIWielki rdf:type owl:NamedIndividual ;
+                    rdfs:label "Wlodzimierz I Wielki"@pl .
+
+
+###  http://onto.kul.pl/ohp#wojnaPolskoNiemiecka
+:wojnaPolskoNiemiecka rdf:type owl:NamedIndividual ;
+                      rdfs:label "Wojna polsko-niemiecka"@pl .
+
+
+###  http://onto.kul.pl/ohp#zbigniew
+:zbigniew rdf:type owl:NamedIndividual ;
+          rdfs:label "Zbigniew"@pl .
+
+
+###  http://onto.kul.pl/ohp#zjazdWGnieznie
+:zjazdWGnieznie rdf:type owl:NamedIndividual ;
+                rdfs:label "Zjazd w Gnieznie w 1000 roku"@pl .
+
+
+###  http://onto.kul.pl/ohp#zjazdWKwedlinburgu
+:zjazdWKwedlinburgu rdf:type owl:NamedIndividual ;
+                    rdfs:label "Zjazd w Kwedlinburgu w 973 roku"@pl .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

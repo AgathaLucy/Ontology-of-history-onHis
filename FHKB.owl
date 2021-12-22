@@ -1,0 +1,1667 @@
+@prefix : <http://onto.kul.pl/FHKB#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://onto.kul.pl/FHKB> a owl:Ontology ;
+	rdfs:comment "Ontologia rodziny"@pl , "Ontology of family"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://onto.kul.pl/FHKB#hasAuntInLaw
+
+:hasAuntInLaw a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maSpowinowaconego ;
+	owl:inverseOf :isAuntInLawOf .
+# 
+# http://onto.kul.pl/FHKB#hasBrotherInLaw
+
+:hasBrotherInLaw a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasSiblingInLaw ;
+	owl:inverseOf :isBrotherInLawOf ;
+	owl:propertyChainAxiom _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first :maMalzonka ;
+	rdf:rest _:genid1 .
+
+_:genid1 a rdf:List ;
+	rdf:first :maBrata ;
+	rdf:rest rdf:nil .
+
+:hasBrotherInLaw owl:propertyChainAxiom _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first :maRodzeńtwo ;
+	rdf:rest _:genid3 .
+
+_:genid3 a rdf:List ;
+	rdf:first :maMeza ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#hasFirstCousinOnceRemoved
+
+:hasFirstCousinOnceRemoved a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKuzyna ;
+	owl:propertyChainAxiom _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first :maKuzynaWPierwszymPokoleniu ;
+	rdf:rest _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first :maDziecko ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#hasGrandParent
+
+:hasGrandParent a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maPrzodka ;
+	owl:inverseOf :isGrandParentOf ;
+	owl:propertyChainAxiom _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid7 .
+
+_:genid7 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#hasGreatAunt
+
+:hasGreatAunt a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego ;
+	owl:inverseOf :isGreatAuntOf ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Kobieta ;
+	owl:propertyChainAxiom _:genid10 .
+
+_:genid10 a rdf:List ;
+	rdf:first :hasGrandParent ;
+	rdf:rest _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first :maSiostre ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#hasGreatUncle
+
+:hasGreatUncle a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego ;
+	owl:inverseOf :isGreatUncleOf ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Mezczyzna ;
+	owl:propertyChainAxiom _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first :hasGrandParent ;
+	rdf:rest _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first :maBrata ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#hasSiblingInLaw
+
+:hasSiblingInLaw a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maSpowinowaconego ;
+	owl:inverseOf :isSiblingInLawOf .
+# 
+# http://onto.kul.pl/FHKB#hasSisterInLaw
+
+:hasSisterInLaw a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasSiblingInLaw ;
+	owl:inverseOf :isSisterInLawOf ;
+	owl:propertyChainAxiom _:genid14 .
+
+_:genid14 a rdf:List ;
+	rdf:first :maMalzonka ;
+	rdf:rest _:genid13 .
+
+_:genid13 a rdf:List ;
+	rdf:first :maSiostre ;
+	rdf:rest rdf:nil .
+
+:hasSisterInLaw owl:propertyChainAxiom _:genid16 .
+
+_:genid16 a rdf:List ;
+	rdf:first :maRodzeńtwo ;
+	rdf:rest _:genid15 .
+
+_:genid15 a rdf:List ;
+	rdf:first :maZone ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#hasUncleInLaw
+
+:hasUncleInLaw a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maSpowinowaconego ;
+	owl:inverseOf :isUncleInLawOf .
+# 
+# http://onto.kul.pl/FHKB#isAuntInLawOf
+
+:isAuntInLawOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:propertyChainAxiom _:genid19 .
+
+_:genid19 a rdf:List ;
+	rdf:first :jestZona ;
+	rdf:rest _:genid18 .
+
+_:genid18 a rdf:List ;
+	rdf:first :jestBratem ;
+	rdf:rest _:genid17 .
+
+_:genid17 a rdf:List ;
+	rdf:first :jestRodzicem ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#isBrotherInLawOf
+
+:isBrotherInLawOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isSiblingInLawOf .
+# 
+# http://onto.kul.pl/FHKB#isGrandParentOf
+
+:isGrandParentOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestPrzodkiem .
+# 
+# http://onto.kul.pl/FHKB#isGreatAuntOf
+
+:isGreatAuntOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# http://onto.kul.pl/FHKB#isGreatUncleOf
+
+:isGreatUncleOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# http://onto.kul.pl/FHKB#isSiblingInLawOf
+
+:isSiblingInLawOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# http://onto.kul.pl/FHKB#isSisterInLawOf
+
+:isSisterInLawOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isSiblingInLawOf .
+# 
+# http://onto.kul.pl/FHKB#isUncleInLawOf
+
+:isUncleInLawOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:propertyChainAxiom _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first :jestMezem ;
+	rdf:rest _:genid21 .
+
+_:genid21 a rdf:List ;
+	rdf:first :jestSiostra ;
+	rdf:rest _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first :jestRodzicem ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#jestBabcią
+
+:jestBabcią a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isGrandParentOf ;
+	owl:inverseOf :maBabcie .
+# 
+# http://onto.kul.pl/FHKB#jestBratem
+
+:jestBratem a owl:ObjectProperty ;
+	rdfs:subPropertyOf :nalezyDoRodzenstwa ;
+	owl:inverseOf :maBrata .
+# 
+# http://onto.kul.pl/FHKB#jestCiocia
+
+:jestCiocia a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :maCiocie .
+# 
+# http://onto.kul.pl/FHKB#jestCorka
+
+:jestCorka a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestDzieckiem ;
+	owl:inverseOf :maCorke .
+# 
+# http://onto.kul.pl/FHKB#jestDziadkiem
+
+:jestDziadkiem a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isGrandParentOf ;
+	owl:inverseOf :maDziadka .
+# 
+# http://onto.kul.pl/FHKB#jestDzieckiem
+
+:jestDzieckiem a owl:ObjectProperty ;
+	owl:equivalentProperty :maRodzica ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :maDziecko .
+# 
+# http://onto.kul.pl/FHKB#jestMalzonkiem
+
+:jestMalzonkiem a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :maMalzonka ;
+	a owl:SymmetricProperty .
+# 
+# http://onto.kul.pl/FHKB#jestMatka
+
+:jestMatka a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestRodzicem ;
+	owl:inverseOf :maMatke .
+# 
+# http://onto.kul.pl/FHKB#jestMeskimPartneremW
+
+:jestMeskimPartneremW a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestPartneremW ;
+	owl:inverseOf :maMeskiegoPartnera .
+# 
+# http://onto.kul.pl/FHKB#jestMezem
+
+:jestMezem a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestMalzonkiem ;
+	owl:inverseOf :maMeza .
+# 
+# http://onto.kul.pl/FHKB#jestOjcem
+
+:jestOjcem a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestRodzicem ;
+	owl:inverseOf :maOjca .
+# 
+# http://onto.kul.pl/FHKB#jestPartneremW
+
+:jestPartneremW a owl:ObjectProperty ;
+	owl:inverseOf :maPartnera .
+# 
+# http://onto.kul.pl/FHKB#jestPrzodkiem
+
+:jestPrzodkiem a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :maPrzodka .
+# 
+# http://onto.kul.pl/FHKB#jestRodzicem
+
+:jestRodzicem a owl:ObjectProperty ;
+	owl:equivalentProperty :maDziecko ;
+	rdfs:subPropertyOf :jestPrzodkiem ;
+	owl:inverseOf :maRodzica .
+# 
+# http://onto.kul.pl/FHKB#jestSiostra
+
+:jestSiostra a owl:ObjectProperty ;
+	rdfs:subPropertyOf :nalezyDoRodzenstwa ;
+	owl:inverseOf :maSiostre .
+# 
+# http://onto.kul.pl/FHKB#jestSynem
+
+:jestSynem a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestDzieckiem ;
+	owl:inverseOf :maSyna .
+# 
+# http://onto.kul.pl/FHKB#jestTesciem
+
+:jestTesciem a owl:ObjectProperty ;
+	rdfs:subPropertyOf :nalezyDoTesciow ;
+	owl:inverseOf :maTescia .
+# 
+# http://onto.kul.pl/FHKB#jestTesciowa
+
+:jestTesciowa a owl:ObjectProperty ;
+	rdfs:subPropertyOf :nalezyDoTesciow ;
+	owl:inverseOf :maTesciowa .
+# 
+# http://onto.kul.pl/FHKB#jestWujkiem
+
+:jestWujkiem a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :maWujka .
+# 
+# http://onto.kul.pl/FHKB#jestZenskimPartneremW
+
+:jestZenskimPartneremW a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestPartneremW ;
+	owl:inverseOf :maZenskiegoPartnera .
+# 
+# http://onto.kul.pl/FHKB#jestZona
+
+:jestZona a owl:ObjectProperty ;
+	rdfs:subPropertyOf :jestMalzonkiem ;
+	owl:inverseOf :maZone .
+# 
+# http://onto.kul.pl/FHKB#maBabcie
+
+:maBabcie a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasGrandParent ;
+	owl:propertyChainAxiom _:genid24 .
+
+_:genid24 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid23 .
+
+_:genid23 a rdf:List ;
+	rdf:first :maMatke ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maBrata
+
+:maBrata a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maRodzeńtwo ;
+	a owl:TransitiveProperty ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Mezczyzna .
+# 
+# http://onto.kul.pl/FHKB#maCiocie
+
+:maCiocie a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Kobieta ;
+	owl:propertyChainAxiom _:genid26 .
+
+_:genid26 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid25 .
+
+_:genid25 a rdf:List ;
+	rdf:first :maSiostre ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maCorke
+
+:maCorke a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maDziecko ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Kobieta .
+# 
+# http://onto.kul.pl/FHKB#maDziadka
+
+:maDziadka a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasGrandParent ;
+	owl:propertyChainAxiom _:genid28 .
+
+_:genid28 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid27 .
+
+_:genid27 a rdf:List ;
+	rdf:first :maOjca ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maDziecko
+
+:maDziecko a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego .
+# 
+# http://onto.kul.pl/FHKB#maKrewnego
+
+:maKrewnego a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maRelacjeZ ;
+	a owl:SymmetricProperty .
+# 
+# http://onto.kul.pl/FHKB#maKuzyna
+
+:maKuzyna a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego .
+# 
+# http://onto.kul.pl/FHKB#maKuzynaWDrugimPokoleniu
+
+:maKuzynaWDrugimPokoleniu a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKuzyna ;
+	a owl:SymmetricProperty ;
+	owl:propertyChainAxiom _:genid31 .
+
+_:genid31 a rdf:List ;
+	rdf:first :hasGrandParent ;
+	rdf:rest _:genid30 .
+
+_:genid30 a rdf:List ;
+	rdf:first :maRodzeńtwo ;
+	rdf:rest _:genid29 .
+
+_:genid29 a rdf:List ;
+	rdf:first :isGrandParentOf ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maKuzynaWPierwszymPokoleniu
+
+:maKuzynaWPierwszymPokoleniu a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKuzyna ;
+	a owl:SymmetricProperty ;
+	owl:propertyChainAxiom _:genid34 .
+
+_:genid34 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid33 .
+
+_:genid33 a rdf:List ;
+	rdf:first :maRodzeńtwo ;
+	rdf:rest _:genid32 .
+
+_:genid32 a rdf:List ;
+	rdf:first :maDziecko ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maMalzonka
+
+:maMalzonka a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maSpowinowaconego ;
+	a owl:SymmetricProperty .
+# 
+# http://onto.kul.pl/FHKB#maMatke
+
+:maMatke a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maRodzica ;
+	a owl:FunctionalProperty ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Kobieta ;
+	rdfs:comment "rozumienie relacji maMatke jest biologiczne"@pl .
+# 
+# http://onto.kul.pl/FHKB#maMeskiegoPartnera
+
+:maMeskiegoPartnera a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maPartnera ;
+	rdfs:domain :Slub ;
+	rdfs:range :Mezczyzna .
+# 
+# http://onto.kul.pl/FHKB#maMeza
+
+:maMeza a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maMalzonka ;
+	owl:propertyChainAxiom _:genid36 .
+
+_:genid36 a rdf:List ;
+	rdf:first :jestZenskimPartneremW ;
+	rdf:rest _:genid35 .
+
+_:genid35 a rdf:List ;
+	rdf:first :maMeskiegoPartnera ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maOjca
+
+:maOjca a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maRodzica ;
+	a owl:FunctionalProperty ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Mezczyzna .
+# 
+# http://onto.kul.pl/FHKB#maPartnera
+
+:maPartnera a owl:ObjectProperty ;
+	rdfs:domain :Slub ;
+	rdfs:range :Osoba .
+# 
+# http://onto.kul.pl/FHKB#maPlec
+
+:maPlec a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Plec .
+# 
+# http://onto.kul.pl/FHKB#maPrzodka
+
+:maPrzodka a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego ;
+	a owl:TransitiveProperty ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Osoba .
+# 
+# http://onto.kul.pl/FHKB#maRelacjeZ
+
+:maRelacjeZ a owl:ObjectProperty , owl:SymmetricProperty .
+# 
+# http://onto.kul.pl/FHKB#maRodzeńtwo
+
+:maRodzeńtwo a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego ;
+	owl:inverseOf :nalezyDoRodzenstwa ;
+	a owl:SymmetricProperty ;
+	owl:propertyChainAxiom _:genid38 .
+
+_:genid38 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid37 .
+
+_:genid37 a rdf:List ;
+	rdf:first :jestRodzicem ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maRodzica
+
+:maRodzica a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maPrzodka ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Osoba .
+# 
+# http://onto.kul.pl/FHKB#maSiostre
+
+:maSiostre a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maRodzeńtwo ;
+	a owl:TransitiveProperty ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Kobieta .
+# 
+# http://onto.kul.pl/FHKB#maSpowinowaconego
+
+:maSpowinowaconego a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maRelacjeZ .
+# 
+# http://onto.kul.pl/FHKB#maSyna
+
+:maSyna a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maDziecko ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Mezczyzna .
+# 
+# http://onto.kul.pl/FHKB#maTescia
+
+:maTescia a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maTesciow ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Mezczyzna .
+# 
+# http://onto.kul.pl/FHKB#maTesciow
+
+:maTesciow a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maSpowinowaconego ;
+	owl:inverseOf :nalezyDoTesciow .
+# 
+# http://onto.kul.pl/FHKB#maTesciowa
+
+:maTesciowa a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maTesciow ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Kobieta .
+# 
+# http://onto.kul.pl/FHKB#maWujka
+
+:maWujka a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maKrewnego ;
+	rdfs:domain :Osoba ;
+	rdfs:range :Mezczyzna ;
+	owl:propertyChainAxiom _:genid40 .
+
+_:genid40 a rdf:List ;
+	rdf:first :maRodzica ;
+	rdf:rest _:genid39 .
+
+_:genid39 a rdf:List ;
+	rdf:first :maBrata ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#maZenskiegoPartnera
+
+:maZenskiegoPartnera a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maPartnera ;
+	rdfs:domain :Slub ;
+	rdfs:range :Kobieta .
+# 
+# http://onto.kul.pl/FHKB#maZone
+
+:maZone a owl:ObjectProperty ;
+	rdfs:subPropertyOf :maMalzonka ;
+	owl:propertyChainAxiom _:genid42 .
+
+_:genid42 a rdf:List ;
+	rdf:first :jestMeskimPartneremW ;
+	rdf:rest _:genid41 .
+
+_:genid41 a rdf:List ;
+	rdf:first :maZenskiegoPartnera ;
+	rdf:rest rdf:nil .
+# 
+# http://onto.kul.pl/FHKB#nalezyDoRodzenstwa
+
+:nalezyDoRodzenstwa a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# http://onto.kul.pl/FHKB#nalezyDoTesciow
+
+:nalezyDoTesciow a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://onto.kul.pl/FHKB#hasBirthYear
+
+:hasBirthYear a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasEventYear ;
+	a owl:FunctionalProperty .
+# 
+# http://onto.kul.pl/FHKB#hasDeathYear
+
+:hasDeathYear a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasEventYear ;
+	rdfs:range xsd:integer .
+# 
+# http://onto.kul.pl/FHKB#hasEventYear
+
+:hasEventYear a owl:DatatypeProperty ;
+	rdfs:range xsd:integer .
+# 
+# http://onto.kul.pl/FHKB#hasMarrigeYear
+
+:hasMarrigeYear a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasEventYear ;
+	a owl:FunctionalProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://onto.kul.pl/FHKB#AuntInLaw
+
+:AuntInLaw a owl:Class ;
+	owl:equivalentClass _:genid43 .
+
+_:genid43 owl:intersectionOf _:genid46 .
+
+_:genid46 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid44 .
+
+_:genid44 a rdf:List ;
+	rdf:first _:genid45 .
+
+_:genid45 a owl:Restriction ;
+	owl:onProperty :isAuntInLawOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid44 rdf:rest rdf:nil .
+
+_:genid43 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Babcia
+
+:Babcia a owl:Class ;
+	owl:equivalentClass _:genid47 .
+
+_:genid47 owl:intersectionOf _:genid50 .
+
+_:genid50 a rdf:List ;
+	rdf:first :Kobieta ;
+	rdf:rest _:genid48 .
+
+_:genid48 a rdf:List ;
+	rdf:first _:genid49 .
+
+_:genid49 a owl:Restriction ;
+	owl:onProperty :jestBabcią ;
+	owl:someValuesFrom :Osoba .
+
+_:genid48 rdf:rest rdf:nil .
+
+_:genid47 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Brat
+
+:Brat a owl:Class ;
+	owl:equivalentClass _:genid51 .
+
+_:genid51 owl:intersectionOf _:genid54 .
+
+_:genid54 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid52 .
+
+_:genid52 a rdf:List ;
+	rdf:first _:genid53 .
+
+_:genid53 a owl:Restriction ;
+	owl:onProperty :jestBratem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid52 rdf:rest rdf:nil .
+
+_:genid51 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#BrotherInLaw
+
+:BrotherInLaw a owl:Class ;
+	owl:equivalentClass _:genid55 .
+
+_:genid55 owl:intersectionOf _:genid58 .
+
+_:genid58 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid56 .
+
+_:genid56 a rdf:List ;
+	rdf:first _:genid57 .
+
+_:genid57 a owl:Restriction ;
+	owl:onProperty :isBrotherInLawOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid56 rdf:rest rdf:nil .
+
+_:genid55 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Ciocia
+
+:Ciocia a owl:Class ;
+	owl:equivalentClass _:genid59 .
+
+_:genid59 owl:intersectionOf _:genid62 .
+
+_:genid62 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid60 .
+
+_:genid60 a rdf:List ;
+	rdf:first _:genid61 .
+
+_:genid61 a owl:Restriction ;
+	owl:onProperty :jestCiocia ;
+	owl:someValuesFrom :Osoba .
+
+_:genid60 rdf:rest rdf:nil .
+
+_:genid59 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Corka
+
+:Corka a owl:Class ;
+	owl:equivalentClass _:genid63 .
+
+_:genid63 owl:intersectionOf _:genid66 .
+
+_:genid66 a rdf:List ;
+	rdf:first :Kobieta ;
+	rdf:rest _:genid64 .
+
+_:genid64 a rdf:List ;
+	rdf:first _:genid65 .
+
+_:genid65 a owl:Restriction ;
+	owl:onProperty :maRodzica ;
+	owl:someValuesFrom :Osoba .
+
+_:genid64 rdf:rest rdf:nil .
+
+_:genid63 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Dziadek
+
+:Dziadek a owl:Class ;
+	owl:equivalentClass _:genid67 .
+
+_:genid67 owl:intersectionOf _:genid70 .
+
+_:genid70 a rdf:List ;
+	rdf:first :Mezczyzna ;
+	rdf:rest _:genid68 .
+
+_:genid68 a rdf:List ;
+	rdf:first _:genid69 .
+
+_:genid69 a owl:Restriction ;
+	owl:onProperty :jestDziadkiem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid68 rdf:rest rdf:nil .
+
+_:genid67 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Dziadkowie
+
+:Dziadkowie a owl:Class ;
+	owl:equivalentClass _:genid71 .
+
+_:genid71 owl:intersectionOf _:genid81 .
+
+_:genid81 a rdf:List ;
+	rdf:first _:genid82 .
+
+_:genid82 owl:intersectionOf _:genid85 .
+
+_:genid85 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid83 .
+
+_:genid83 a rdf:List ;
+	rdf:first _:genid84 .
+
+_:genid84 a owl:Restriction ;
+	owl:onProperty :isGrandParentOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid83 rdf:rest rdf:nil .
+
+_:genid82 a owl:Class .
+
+_:genid81 rdf:rest _:genid72 .
+
+_:genid72 a rdf:List ;
+	rdf:first _:genid73 .
+
+_:genid73 owl:intersectionOf _:genid80 .
+
+_:genid80 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid74 .
+
+_:genid74 a rdf:List ;
+	rdf:first _:genid75 .
+
+_:genid75 a owl:Restriction ;
+	owl:onProperty :jestRodzicem ;
+	owl:someValuesFrom _:genid76 .
+
+_:genid76 owl:intersectionOf _:genid79 .
+
+_:genid79 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid77 .
+
+_:genid77 a rdf:List ;
+	rdf:first _:genid78 .
+
+_:genid78 a owl:Restriction ;
+	owl:onProperty :jestRodzicem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid77 rdf:rest rdf:nil .
+
+_:genid76 a owl:Class .
+
+_:genid74 rdf:rest rdf:nil .
+
+_:genid73 a owl:Class .
+
+_:genid72 rdf:rest rdf:nil .
+
+_:genid71 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Dziecko
+
+:Dziecko a owl:Class ;
+	owl:equivalentClass _:genid86 .
+
+_:genid86 owl:intersectionOf _:genid89 .
+
+_:genid89 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid87 .
+
+_:genid87 a rdf:List ;
+	rdf:first _:genid88 .
+
+_:genid88 a owl:Restriction ;
+	owl:onProperty :maRodzica ;
+	owl:someValuesFrom :Osoba .
+
+_:genid87 rdf:rest rdf:nil .
+
+_:genid86 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#FirstCousinOnceRemoved
+
+:FirstCousinOnceRemoved a owl:Class ;
+	owl:equivalentClass _:genid90 .
+
+_:genid90 owl:intersectionOf _:genid93 .
+
+_:genid93 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid91 .
+
+_:genid91 a rdf:List ;
+	rdf:first _:genid92 .
+
+_:genid92 a owl:Restriction ;
+	owl:onProperty :hasFirstCousinOnceRemoved ;
+	owl:someValuesFrom :Osoba .
+
+_:genid91 rdf:rest rdf:nil .
+
+_:genid90 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Forefather
+
+:Forefather a owl:Class ;
+	owl:equivalentClass _:genid94 .
+
+_:genid94 owl:intersectionOf _:genid97 .
+
+_:genid97 a rdf:List ;
+	rdf:first :Mezczyzna ;
+	rdf:rest _:genid95 .
+
+_:genid95 a rdf:List ;
+	rdf:first _:genid96 .
+
+_:genid96 a owl:Restriction ;
+	owl:onProperty :jestPrzodkiem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid95 rdf:rest rdf:nil .
+
+_:genid94 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Foremother
+
+:Foremother a owl:Class ;
+	owl:equivalentClass _:genid98 .
+
+_:genid98 owl:intersectionOf _:genid101 .
+
+_:genid101 a rdf:List ;
+	rdf:first :Kobieta ;
+	rdf:rest _:genid99 .
+
+_:genid99 a rdf:List ;
+	rdf:first _:genid100 .
+
+_:genid100 a owl:Restriction ;
+	owl:onProperty :jestPrzodkiem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid99 rdf:rest rdf:nil .
+
+_:genid98 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#GlownaDziedzinaFHKB
+
+:GlownaDziedzinaFHKB a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#GreatAunt
+
+:GreatAunt a owl:Class ;
+	owl:equivalentClass _:genid102 .
+
+_:genid102 owl:intersectionOf _:genid105 .
+
+_:genid105 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid103 .
+
+_:genid103 a rdf:List ;
+	rdf:first _:genid104 .
+
+_:genid104 a owl:Restriction ;
+	owl:onProperty :isGreatAuntOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid103 rdf:rest rdf:nil .
+
+_:genid102 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#GreatUncle
+
+:GreatUncle a owl:Class ;
+	owl:equivalentClass _:genid106 .
+
+_:genid106 owl:intersectionOf _:genid109 .
+
+_:genid109 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid107 .
+
+_:genid107 a rdf:List ;
+	rdf:first _:genid108 .
+
+_:genid108 a owl:Restriction ;
+	owl:onProperty :isGreatUncleOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid107 rdf:rest rdf:nil .
+
+_:genid106 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Kobieta
+
+:Kobieta a owl:Class ;
+	owl:equivalentClass _:genid110 .
+
+_:genid110 owl:intersectionOf _:genid113 .
+
+_:genid113 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid111 .
+
+_:genid111 a rdf:List ;
+	rdf:first _:genid112 .
+
+_:genid112 a owl:Restriction ;
+	owl:onProperty :maPlec ;
+	owl:someValuesFrom :Zenska .
+
+_:genid111 rdf:rest rdf:nil .
+
+_:genid110 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Krewny
+
+:Krewny a owl:Class ;
+	owl:equivalentClass _:genid114 .
+
+_:genid114 owl:intersectionOf _:genid117 .
+
+_:genid117 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid115 .
+
+_:genid115 a rdf:List ;
+	rdf:first _:genid116 .
+
+_:genid116 a owl:Restriction ;
+	owl:onProperty :maKrewnego ;
+	owl:someValuesFrom :Osoba .
+
+_:genid115 rdf:rest rdf:nil .
+
+_:genid114 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#KuzynWDrugimPokoleniu
+
+:KuzynWDrugimPokoleniu a owl:Class ;
+	owl:equivalentClass _:genid118 .
+
+_:genid118 owl:intersectionOf _:genid121 .
+
+_:genid121 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid119 .
+
+_:genid119 a rdf:List ;
+	rdf:first _:genid120 .
+
+_:genid120 a owl:Restriction ;
+	owl:onProperty :maKuzynaWDrugimPokoleniu ;
+	owl:someValuesFrom :Osoba .
+
+_:genid119 rdf:rest rdf:nil .
+
+_:genid118 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#KuzynWPierwszymPokoleniu
+
+:KuzynWPierwszymPokoleniu a owl:Class ;
+	owl:equivalentClass _:genid122 .
+
+_:genid122 owl:intersectionOf _:genid125 .
+
+_:genid125 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid123 .
+
+_:genid123 a rdf:List ;
+	rdf:first _:genid124 .
+
+_:genid124 a owl:Restriction ;
+	owl:onProperty :maKuzynaWPierwszymPokoleniu ;
+	owl:someValuesFrom :Osoba .
+
+_:genid123 rdf:rest rdf:nil .
+
+_:genid122 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Meska
+
+:Meska a owl:Class ;
+	rdfs:subClassOf :Plec ;
+	owl:disjointWith :Zenska .
+# 
+# http://onto.kul.pl/FHKB#MeskiPotomek
+
+:MeskiPotomek a owl:Class ;
+	owl:equivalentClass _:genid126 .
+
+_:genid126 owl:intersectionOf _:genid129 .
+
+_:genid129 a rdf:List ;
+	rdf:first :Mezczyzna ;
+	rdf:rest _:genid127 .
+
+_:genid127 a rdf:List ;
+	rdf:first _:genid128 .
+
+_:genid128 a owl:Restriction ;
+	owl:onProperty :maPrzodka ;
+	owl:someValuesFrom :Osoba .
+
+_:genid127 rdf:rest rdf:nil .
+
+_:genid126 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#MeskiPrzodek
+
+:MeskiPrzodek a owl:Class ;
+	owl:equivalentClass _:genid130 .
+
+_:genid130 owl:intersectionOf _:genid133 .
+
+_:genid133 a rdf:List ;
+	rdf:first :Mezczyzna ;
+	rdf:rest _:genid131 .
+
+_:genid131 a rdf:List ;
+	rdf:first _:genid132 .
+
+_:genid132 a owl:Restriction ;
+	owl:onProperty :jestPrzodkiem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid131 rdf:rest rdf:nil .
+
+_:genid130 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Mezczyzna
+
+:Mezczyzna a owl:Class ;
+	owl:equivalentClass _:genid134 .
+
+_:genid134 owl:intersectionOf _:genid137 .
+
+_:genid137 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid135 .
+
+_:genid135 a rdf:List ;
+	rdf:first _:genid136 .
+
+_:genid136 a owl:Restriction ;
+	owl:onProperty :maPlec ;
+	owl:someValuesFrom :Meska .
+
+_:genid135 rdf:rest rdf:nil .
+
+_:genid134 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Osoba
+
+:Osoba a owl:Class ;
+	owl:equivalentClass _:genid138 .
+
+_:genid138 owl:intersectionOf _:genid141 .
+
+_:genid141 a rdf:List ;
+	rdf:first :GlownaDziedzinaFHKB ;
+	rdf:rest _:genid139 .
+
+_:genid139 a rdf:List ;
+	rdf:first _:genid140 .
+
+_:genid140 a owl:Restriction ;
+	owl:onProperty :maPlec ;
+	owl:someValuesFrom :Plec .
+
+_:genid139 rdf:rest rdf:nil .
+
+_:genid138 a owl:Class .
+
+:Osoba owl:disjointWith :Plec .
+# 
+# http://onto.kul.pl/FHKB#Plec
+
+:Plec a owl:Class ;
+	owl:equivalentClass _:genid142 .
+
+_:genid142 owl:intersectionOf _:genid147 .
+
+_:genid147 a rdf:List ;
+	rdf:first :GlownaDziedzinaFHKB ;
+	rdf:rest _:genid143 .
+
+_:genid143 a rdf:List ;
+	rdf:first _:genid144 .
+
+_:genid144 a owl:Class ;
+	owl:unionOf _:genid146 .
+
+_:genid146 a rdf:List ;
+	rdf:first :Meska ;
+	rdf:rest _:genid145 .
+
+_:genid145 a rdf:List ;
+	rdf:first :Zenska ;
+	rdf:rest rdf:nil .
+
+_:genid143 rdf:rest rdf:nil .
+
+_:genid142 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Potomek
+
+:Potomek a owl:Class ;
+	owl:equivalentClass _:genid148 .
+
+_:genid148 owl:intersectionOf _:genid151 .
+
+_:genid151 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid149 .
+
+_:genid149 a rdf:List ;
+	rdf:first _:genid150 .
+
+_:genid150 a owl:Restriction ;
+	owl:onProperty :maPrzodka ;
+	owl:someValuesFrom :Osoba .
+
+_:genid149 rdf:rest rdf:nil .
+
+_:genid148 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Prababcia
+
+:Prababcia a owl:Class ;
+	owl:equivalentClass _:genid152 .
+
+_:genid152 owl:intersectionOf _:genid156 .
+
+_:genid156 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid153 .
+
+_:genid153 a rdf:List ;
+	rdf:first _:genid154 .
+
+_:genid154 a owl:Restriction ;
+	owl:onProperty :jestMatka ;
+	owl:someValuesFrom _:genid155 .
+
+_:genid155 a owl:Restriction ;
+	owl:onProperty :isGrandParentOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid153 rdf:rest rdf:nil .
+
+_:genid152 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Pradziadek
+
+:Pradziadek a owl:Class ;
+	owl:equivalentClass _:genid157 .
+
+_:genid157 owl:intersectionOf _:genid161 .
+
+_:genid161 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid158 .
+
+_:genid158 a rdf:List ;
+	rdf:first _:genid159 .
+
+_:genid159 a owl:Restriction ;
+	owl:onProperty :jestOjcem ;
+	owl:someValuesFrom _:genid160 .
+
+_:genid160 a owl:Restriction ;
+	owl:onProperty :isGrandParentOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid158 rdf:rest rdf:nil .
+
+_:genid157 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Pradziadkowie
+
+:Pradziadkowie a owl:Class ;
+	owl:equivalentClass _:genid162 .
+
+_:genid162 owl:intersectionOf _:genid166 .
+
+_:genid166 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid163 .
+
+_:genid163 a rdf:List ;
+	rdf:first _:genid164 .
+
+_:genid164 a owl:Restriction ;
+	owl:onProperty :jestRodzicem ;
+	owl:someValuesFrom _:genid165 .
+
+_:genid165 a owl:Restriction ;
+	owl:onProperty :isGrandParentOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid163 rdf:rest rdf:nil .
+
+_:genid162 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Przodek
+
+:Przodek a owl:Class ;
+	owl:equivalentClass _:genid167 .
+
+_:genid167 owl:intersectionOf _:genid170 .
+
+_:genid170 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid168 .
+
+_:genid168 a rdf:List ;
+	rdf:first _:genid169 .
+
+_:genid169 a owl:Restriction ;
+	owl:onProperty :jestPrzodkiem ;
+	owl:someValuesFrom owl:Thing .
+
+_:genid168 rdf:rest rdf:nil .
+
+_:genid167 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Relation
+
+:Relation a owl:Class ;
+	owl:equivalentClass _:genid171 .
+
+_:genid171 owl:intersectionOf _:genid174 .
+
+_:genid174 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid172 .
+
+_:genid172 a rdf:List ;
+	rdf:first _:genid173 .
+
+_:genid173 a owl:Restriction ;
+	owl:onProperty :maRelacjeZ ;
+	owl:someValuesFrom :Osoba .
+
+_:genid172 rdf:rest rdf:nil .
+
+_:genid171 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#SiblingInLaw
+
+:SiblingInLaw a owl:Class ;
+	owl:equivalentClass _:genid175 .
+
+_:genid175 owl:intersectionOf _:genid178 .
+
+_:genid178 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid176 .
+
+_:genid176 a rdf:List ;
+	rdf:first _:genid177 .
+
+_:genid177 a owl:Restriction ;
+	owl:onProperty :isSiblingInLawOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid176 rdf:rest rdf:nil .
+
+_:genid175 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Siostra
+
+:Siostra a owl:Class ;
+	owl:equivalentClass _:genid179 .
+
+_:genid179 owl:intersectionOf _:genid182 .
+
+_:genid182 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid180 .
+
+_:genid180 a rdf:List ;
+	rdf:first _:genid181 .
+
+_:genid181 a owl:Restriction ;
+	owl:onProperty :jestSiostra ;
+	owl:someValuesFrom :Osoba .
+
+_:genid180 rdf:rest rdf:nil .
+
+_:genid179 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#SisterInLaw
+
+:SisterInLaw a owl:Class ;
+	owl:equivalentClass _:genid183 .
+
+_:genid183 owl:intersectionOf _:genid186 .
+
+_:genid186 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid184 .
+
+_:genid184 a rdf:List ;
+	rdf:first _:genid185 .
+
+_:genid185 a owl:Restriction ;
+	owl:onProperty :isSisterInLawOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid184 rdf:rest rdf:nil .
+
+_:genid183 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Slub
+
+:Slub a owl:Class ;
+	rdfs:subClassOf :GlownaDziedzinaFHKB .
+# 
+# http://onto.kul.pl/FHKB#Spowinowacony
+
+:Spowinowacony a owl:Class ;
+	owl:equivalentClass _:genid187 .
+
+_:genid187 owl:intersectionOf _:genid190 .
+
+_:genid190 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid188 .
+
+_:genid188 a rdf:List ;
+	rdf:first _:genid189 .
+
+_:genid189 a owl:Restriction ;
+	owl:onProperty :maSpowinowaconego ;
+	owl:someValuesFrom :Osoba .
+
+_:genid188 rdf:rest rdf:nil .
+
+_:genid187 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Syn
+
+:Syn a owl:Class ;
+	owl:equivalentClass _:genid191 .
+
+_:genid191 owl:intersectionOf _:genid194 .
+
+_:genid194 a rdf:List ;
+	rdf:first :Mezczyzna ;
+	rdf:rest _:genid192 .
+
+_:genid192 a rdf:List ;
+	rdf:first _:genid193 .
+
+_:genid193 a owl:Restriction ;
+	owl:onProperty :maRodzica ;
+	owl:someValuesFrom :Osoba .
+
+_:genid192 rdf:rest rdf:nil .
+
+_:genid191 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Tesc
+
+:Tesc a owl:Class ;
+	owl:equivalentClass _:genid195 .
+
+_:genid195 owl:intersectionOf _:genid198 .
+
+_:genid198 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid196 .
+
+_:genid196 a rdf:List ;
+	rdf:first _:genid197 .
+
+_:genid197 a owl:Restriction ;
+	owl:onProperty :jestTesciem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid196 rdf:rest rdf:nil .
+
+_:genid195 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Tesciowa
+
+:Tesciowa a owl:Class ;
+	owl:equivalentClass _:genid199 .
+
+_:genid199 owl:intersectionOf _:genid202 .
+
+_:genid202 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid200 .
+
+_:genid200 a rdf:List ;
+	rdf:first _:genid201 .
+
+_:genid201 a owl:Restriction ;
+	owl:onProperty :jestTesciowa ;
+	owl:someValuesFrom :Osoba .
+
+_:genid200 rdf:rest rdf:nil .
+
+_:genid199 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Tesciowie
+
+:Tesciowie a owl:Class ;
+	owl:equivalentClass _:genid203 .
+
+_:genid203 owl:intersectionOf _:genid206 .
+
+_:genid206 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid204 .
+
+_:genid204 a rdf:List ;
+	rdf:first _:genid205 .
+
+_:genid205 a owl:Restriction ;
+	owl:onProperty :nalezyDoTesciow ;
+	owl:someValuesFrom :Osoba .
+
+_:genid204 rdf:rest rdf:nil .
+
+_:genid203 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#UncleInLaw
+
+:UncleInLaw a owl:Class ;
+	owl:equivalentClass _:genid207 .
+
+_:genid207 owl:intersectionOf _:genid210 .
+
+_:genid210 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid208 .
+
+_:genid208 a rdf:List ;
+	rdf:first _:genid209 .
+
+_:genid209 a owl:Restriction ;
+	owl:onProperty :isUncleInLawOf ;
+	owl:someValuesFrom :Osoba .
+
+_:genid208 rdf:rest rdf:nil .
+
+_:genid207 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Wujek
+
+:Wujek a owl:Class ;
+	owl:equivalentClass _:genid211 .
+
+_:genid211 owl:intersectionOf _:genid214 .
+
+_:genid214 a rdf:List ;
+	rdf:first :Osoba ;
+	rdf:rest _:genid212 .
+
+_:genid212 a rdf:List ;
+	rdf:first _:genid213 .
+
+_:genid213 a owl:Restriction ;
+	owl:onProperty :jestWujkiem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid212 rdf:rest rdf:nil .
+
+_:genid211 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#Zenska
+
+:Zenska a owl:Class ;
+	rdfs:subClassOf :Plec .
+# 
+# http://onto.kul.pl/FHKB#ZenskiPotomek
+
+:ZenskiPotomek a owl:Class ;
+	owl:equivalentClass _:genid215 .
+
+_:genid215 owl:intersectionOf _:genid218 .
+
+_:genid218 a rdf:List ;
+	rdf:first :Kobieta ;
+	rdf:rest _:genid216 .
+
+_:genid216 a rdf:List ;
+	rdf:first _:genid217 .
+
+_:genid217 a owl:Restriction ;
+	owl:onProperty :maPrzodka ;
+	owl:someValuesFrom :Osoba .
+
+_:genid216 rdf:rest rdf:nil .
+
+_:genid215 a owl:Class .
+# 
+# http://onto.kul.pl/FHKB#ZenskiPrzodek
+
+:ZenskiPrzodek a owl:Class ;
+	owl:equivalentClass _:genid219 .
+
+_:genid219 owl:intersectionOf _:genid222 .
+
+_:genid222 a rdf:List ;
+	rdf:first :Kobieta ;
+	rdf:rest _:genid220 .
+
+_:genid220 a rdf:List ;
+	rdf:first _:genid221 .
+
+_:genid221 a owl:Restriction ;
+	owl:onProperty :jestPrzodkiem ;
+	owl:someValuesFrom :Osoba .
+
+_:genid220 rdf:rest rdf:nil .
+
+_:genid219 a owl:Class .
+# 
+# Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
